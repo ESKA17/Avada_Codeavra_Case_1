@@ -1,4 +1,4 @@
-package com.example.mycli.server;
+package com.example.mycli.model;
 
 public enum StudyDegree {
         MIDDLE_SCHOOL,

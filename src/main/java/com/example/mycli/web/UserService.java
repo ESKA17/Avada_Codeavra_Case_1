@@ -24,11 +24,11 @@ public class UserService {
     }
 
     public UserEntity findByLogin(String login) {
-        return userEntityRepository.findByLogin(login);
+        return userEntityRepository.findByEmail(login);
     }
 
     public UserEntity findByLoginAndPassword(String login, String password) {
-        UserEntity userEntity = userEntityRepository.findByLogin(login);
+        UserEntity userEntity = userEntityRepository.findByEmail(login);
         System.out.println(userEntity + " - user entity");
         if (userEntity != null) {
             if (passwordEncoder.matches(password, userEntity.getPassword())) {

@@ -6,23 +6,26 @@ import com.example.mycli.model.UserEntity;
 import com.example.mycli.repository.UserEntityRepository;
 import com.example.mycli.web.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
+@Service
 public class AccountRegistrationServiceImpl implements AccountRegistrationService{
 
     private final UserEntityRepository userEntityRepository;
     private final UserService userService;
 
     @Override
-    public String registerAccount(String login, String password) {
-        if (userEntityRepository.findByLogin(login) != null) {
-            return "Login taken";
+    public String registerAccount(String email, String password) {
+        UserEntity userEntity = userService.findByLogin(email);
+        if (userEntity == null) {
+            UserEntity user = new UserEntity();
+            user.setPassword(password);
+            user.setEmail(email);
+            userService.saveUser(user);
+            throw new AccountCreated(email);
+        } else {
+            throw new AccountConflict(email);
         }
-        UserEntity u = new UserEntity();
-        u.setPassword(password);
-        u.setLogin(login);
-        userService.saveUser(u);
-        return "Ok";
     }
-
 }

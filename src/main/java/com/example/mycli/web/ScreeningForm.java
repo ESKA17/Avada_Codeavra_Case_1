@@ -16,7 +16,7 @@ public class ScreeningForm {
 
     @PostMapping()
     public void registerUser(@RequestBody @Valid RegRequest registrationRequest) {
-        String login = registrationRequest.getLogin();
+        String login = registrationRequest.getEmail();
     }
 
 }

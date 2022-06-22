@@ -8,6 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RegRequest {
-    private String login;
+    private String email;
     private String password;
 }

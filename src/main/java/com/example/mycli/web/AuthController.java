@@ -6,6 +6,8 @@ import com.example.mycli.exceptions.AccountCreated;
 import com.example.mycli.exceptions.AccountNotFound;
 import com.example.mycli.model.UserEntity;
 import com.example.mycli.repository.UserEntityRepository;
+import com.example.mycli.services.AccountAuthenticationService;
+import com.example.mycli.services.AccountRegistrationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,38 +22,23 @@ import javax.servlet.http.HttpServletResponse;
 @RequiredArgsConstructor
 
 public class AuthController {
-    private final UserService userService;
-    private final JwtProvider jwtProvider;
     private final UserEntityRepository userEntityRepository;
+    private final AccountRegistrationService accountRegistrationService;
+    private final AccountAuthenticationService accountAuthenticationService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody @Valid RegRequest registrationRequest) {
-        String login = registrationRequest.getLogin();
-        UserEntity userEntity = userService.findByLogin(login);
-        if (userEntity == null) {
-            createUser(login, registrationRequest.getPassword());
-            throw new AccountCreated(login);
-        } else {
-            throw new AccountConflict(login);
-        }
+    public void registerUser(@RequestBody @Valid RegRequest registrationRequest) {
+        String email = registrationRequest.getEmail();
+        String password  = registrationRequest.getPassword();
+        accountRegistrationService.registerAccount(email, password);
     }
 
     @PostMapping("/auth")
-    public ResponseEntity<String> auth(@RequestBody @Valid AuthRequest authRequest,
+    public void auth(@RequestBody @Valid AuthRequest authRequest,
                                        HttpServletResponse httpServletResponse) {
-        String login = authRequest.getLogin();
-        if (userEntityRepository.findByLogin(authRequest.getLogin()) == null) throw new AccountNotFound(login);
-        UserEntity userEntity = userService.findByLoginAndPassword(login, authRequest.getPassword());
-        if (userEntity != null) {
-            String token = jwtProvider.generateToken(login);
-            Cookie cookie = new Cookie("token", token);
-            cookie.setHttpOnly(true);
-            httpServletResponse.addCookie(cookie);
-            return ResponseEntity.status(HttpStatus.OK).body("Successfully authenticated, your token: " +
-            new AuthResponse(token).getToken());
-        } else {
-            throw new AccountCheckLoginPassword();
-        }
+        String email = authRequest.getEmail();
+        String password = authRequest.getPassword();
+        accountAuthenticationService.authenticateAccount(email, password, httpServletResponse);
     }
     @GetMapping("/users")
     public List<UserEntity> users() {
@@ -61,11 +48,5 @@ public class AuthController {
     @PostMapping("/logout")
     public void logout() {}
 
-    private void createUser(String login, String password) {
-        UserEntity user = new UserEntity();
-        user.setPassword(password);
-        user.setLogin(login);
-        userService.saveUser(user);
-    }
 }
 

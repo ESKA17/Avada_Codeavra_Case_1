@@ -56,4 +56,11 @@ public class ExceptionsAdviser {
         return ex.getMessage();
     }
 
+    @ResponseBody
+    @ExceptionHandler(AccountOK.class)
+    @ResponseStatus(value = HttpStatus.OK)
+    String accountOK(AccountOK ex) {
+        return ex.getMessage();
+    }
+
 }

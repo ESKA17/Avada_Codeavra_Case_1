@@ -1,6 +1,5 @@
 package com.example.mycli.model;
 
-import com.example.mycli.server.StudyDegree;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
