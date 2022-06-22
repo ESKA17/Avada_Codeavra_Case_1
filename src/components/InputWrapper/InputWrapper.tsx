@@ -4,7 +4,7 @@ import './InputWrapper.scss';
 type Props = {
   id: string,
   title: string,
-  children: ReactChild
+  children: ReactChild,
 };
 
 export function InputWrapper({id, title, children}: Props) {
