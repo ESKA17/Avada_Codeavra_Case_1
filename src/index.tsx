@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import './index.css';
 import Layout from './components/App';
-import Home from './components/pages/Home';
+import Home from './pages/Home';
 import App from './components/App';
 
 const root = ReactDOM.createRoot(

@@ -1,1 +1,19 @@
-.layout{}
+.layout {
+  height: 100vh;
+  background: rgb(214, 183, 240);
+  background: linear-gradient(157deg, rgba(214, 183, 240, 1) 0%, rgba(236, 123, 103, 1) 80%, rgba(231, 118, 106, 1) 100%);
+  padding: 5rem;
+
+  .container {
+    margin: 0 auto;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 3rem;
+    background: linear-gradient(179.46deg, rgba(255, 255, 255, 0.7) 0.46%, rgba(255, 255, 255, 0.7) 113.24%, rgba(255, 255, 255, 0.07) 113.25%);
+    opacity: 0.9;
+    backdrop-filter: blur(24px);
+    border-radius: 36px;
+  }
+}

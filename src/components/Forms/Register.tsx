@@ -3,6 +3,7 @@ import {REGS} from '../../utils/regex';
 import {useForm, SubmitHandler} from 'react-hook-form';
 import {RegistrationInputs} from '../../api/authentication/authTypes';
 import {Authentication} from '../../api/authentication';
+import './Form.scss';
 
 type Props = {};
 
@@ -16,42 +17,40 @@ export function Register(props: Props) {
   }
 
   return (
-    <div className="register">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <InputWrapper id="email" title="Email">
-          <>
-            <input id="email" defaultValue="test" {...register('email', {
-              required: true,
-              pattern: REGS.email,
-              maxLength: 30,
-            })} />
-            {errors.email && <span>This email is required</span>}
-          </>
-        </InputWrapper>
+    <form className={'form'} onSubmit={handleSubmit(onSubmit)}>
+      <InputWrapper id="email" title="Email">
+        <>
+          <input id="email" defaultValue="test" {...register('email', {
+            required: true,
+            pattern: REGS.email,
+            maxLength: 30,
+          })} />
+          {errors.email && <span>This email is required</span>}
+        </>
+      </InputWrapper>
 
-        <InputWrapper id="password" title="Password">
-          <>
-            <input id="password" {...register('password', {
-              required: true,
-              pattern: REGS.password,
-              maxLength: 30,
-            })} />
-            {errors.password && <span>This password is required</span>}
-          </>
-        </InputWrapper>
+      <InputWrapper id="password" title="Password">
+        <>
+          <input id="password" {...register('password', {
+            required: true,
+            pattern: REGS.password,
+            maxLength: 30,
+          })} />
+          {errors.password && <span>This password is required</span>}
+        </>
+      </InputWrapper>
 
-        <InputWrapper id="passwordConfirm" title="Password Confirm">
-          <>
-            <input id="passwordConfirm" {...register('passwordConfirm', {
-              required: true,
-              pattern: REGS.password,
-              maxLength: 30,
-            })} />
-            {errors.passwordConfirm && <span>This passwordConfirm is required</span>}
-          </>
-        </InputWrapper>
-        <input type="submit" />
-      </form>
-    </div>
+      <InputWrapper id="passwordConfirm" title="Password Confirm">
+        <>
+          <input id="passwordConfirm" {...register('passwordConfirm', {
+            required: true,
+            pattern: REGS.password,
+            maxLength: 30,
+          })} />
+          {errors.passwordConfirm && <span>This passwordConfirm is required</span>}
+        </>
+      </InputWrapper>
+      <input type="submit" />
+    </form>
   );
 };

@@ -6,7 +6,7 @@ export interface RequestConfig {
   headers?: Headers;
 }
 
-const BASE_URL = ''; // TODO add url
+const BASE_URL = 'http://139.59.131.82:8087'; // TODO add url
 
 export class Requests {
   baseUrl: string;
@@ -59,11 +59,11 @@ export class Requests {
       const response = await fetch(url, config);
       if (response.ok) return response.json();
       else if (response.status === 401 || response.status === 403) {
-        window.location.replace(ROUTES.LOGIN);
+        // window.location.replace(ROUTES.LOGIN);
       } else alert(response.statusText);
     } catch (e) {
       console.log(e);
-      window.location.replace(ROUTES.ERROR_500);
+      // window.location.replace(ROUTES.ERROR_500);
     }
   }
 }

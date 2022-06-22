@@ -1,0 +1,23 @@
+.home {
+  flex: 1;
+  padding: 3rem 4rem;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 20px;
+  align-items: center;
+
+  .info-block {
+    width: 70%;
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 3rem;
+    }
+
+    p {
+      color: #772467;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+}

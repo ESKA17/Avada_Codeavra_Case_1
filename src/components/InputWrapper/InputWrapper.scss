@@ -1,3 +1,16 @@
-.input-wrapper{
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
 
+  label{
+    font-weight: 600;
+  }
+  input {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    height: 40px;
+    border-radius: 4px;
+    padding: 10px 20px;
+    border: 1px solid #D26032;
+  }
 }

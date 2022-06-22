@@ -15,9 +15,12 @@ export function Login(props: Props) {
     authentication.login(data).then((res) => console.log(res));
   }
 
+const sendCookie = ()=>{
+  fetch('http://139.59.131.82:8087/users', {credentials: "include"}).then(res => console.log(res));
+}
   return (
-    <div className="register">
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <>
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <InputWrapper id="email" title="Email">
           <>
             <input id="email" {...register('email', {
@@ -40,6 +43,8 @@ export function Login(props: Props) {
         </InputWrapper>
         <input type="submit" />
       </form>
-    </div>
+      <button onClick={sendCookie}>Send Cookie</button>
+    </>
+
   );
 };
