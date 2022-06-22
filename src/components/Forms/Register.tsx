@@ -20,21 +20,33 @@ export function Register(props: Props) {
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputWrapper id="email" title="Email">
           <>
-            <input defaultValue="test" {...register('email', {required: true, pattern: REGS.email, maxLength: 30})} />
+            <input id="email" defaultValue="test" {...register('email', {
+              required: true,
+              pattern: REGS.email,
+              maxLength: 30,
+            })} />
             {errors.email && <span>This email is required</span>}
           </>
         </InputWrapper>
 
         <InputWrapper id="password" title="Password">
           <>
-            <input {...register('password', {required: true, pattern: REGS.password, maxLength: 30})} />
+            <input id="password" {...register('password', {
+              required: true,
+              pattern: REGS.password,
+              maxLength: 30,
+            })} />
             {errors.password && <span>This password is required</span>}
           </>
         </InputWrapper>
 
         <InputWrapper id="passwordConfirm" title="Password Confirm">
           <>
-            <input {...register('passwordConfirm', {required: true, pattern: REGS.password, maxLength: 30})} />
+            <input id="passwordConfirm" {...register('passwordConfirm', {
+              required: true,
+              pattern: REGS.password,
+              maxLength: 30,
+            })} />
             {errors.passwordConfirm && <span>This passwordConfirm is required</span>}
           </>
         </InputWrapper>
