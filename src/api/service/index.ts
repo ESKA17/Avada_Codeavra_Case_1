@@ -6,7 +6,7 @@ export interface RequestConfig {
   headers?: Headers;
 }
 
-const BASE_URL = 'http://localhost:8087'; // TODO add url
+const BASE_URL = 'http://localhost:8087';
 
 export class Requests {
   baseUrl: string;

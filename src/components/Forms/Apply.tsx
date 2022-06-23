@@ -4,28 +4,39 @@ import {useForm, SubmitHandler} from 'react-hook-form';
 import {ApplyInputs, TRACKS} from '../../api/authentication/authTypes';
 import {Authentication} from '../../api/authentication';
 import './Form.scss';
+import {useLocation, useNavigate} from 'react-router-dom';
+import {useEffect} from 'react';
 
 type Props = {};
 
 export function Apply(props: Props) {
-  const {register, handleSubmit, control, formState: {errors}} = useForm<ApplyInputs>();
+  const {register, handleSubmit, formState: {errors}} = useForm<ApplyInputs>();
   const onSubmit: SubmitHandler<ApplyInputs> = data => submit(data);
   const authentication = new Authentication();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   async function submit(data: ApplyInputs) {
     await authentication.sendScreeningData(data);
-    uploadFormData(data.cv[0]);
+    await uploadFormData(data.cv[0]);
+    navigate('/profile');
   }
 
-  function uploadFormData(file) {
+  async function uploadFormData(file) {
     const formData = new FormData();
     formData.append('file', file);
-    authentication.uploadCv(formData);
+    await authentication.uploadCv(formData);
   }
 
+  useEffect(() => {
+    const token = sessionStorage.getItem('access_token');
+    if (!token) {
+      navigate('/login');
+    }
+  }, [location]);
   return (
     <form className={'form'} onSubmit={handleSubmit(onSubmit)}>
-      <h1 className={'mb-20'} style={{color: '#000'}} >Application Form</h1>
+      <h1 className={'mb-20'} style={{color: '#000'}}>Application Form</h1>
       <InputWrapper id="email" title="First Name">
         <>
           <input id="email" defaultValue="test" {...register('name', {

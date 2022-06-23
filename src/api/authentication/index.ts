@@ -30,13 +30,13 @@ export class Authentication extends Requests {
   async sendScreeningData(data: ApplyInputs) {
     const path = '/screening';
     await this.post(path, data);
-    localStorage.setItem('isApplied', '');
   }
 
   async getScreeningData() {
     const path = '/screening';
     return await this.get(path);
   }
+
   async getAll() {
     const path = '/screening/all';
     return await this.get(path);

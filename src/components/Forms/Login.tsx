@@ -5,7 +5,8 @@ import {Authentication} from '../../api/authentication';
 import Button from '../Button';
 import {User} from '../../api/users';
 import './Form.scss';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
+import {useEffect} from 'react';
 
 
 type Props = {};
@@ -14,16 +15,21 @@ export function Login(props: Props) {
   const {register, handleSubmit, watch, formState: {errors}} = useForm<LoginInputs>();
   const onSubmit: SubmitHandler<LoginInputs> = data => submit(data);
   const navigate = useNavigate();
+  const location = useLocation();
 
   function submit(data: LoginInputs) {
     const authentication = new Authentication();
     authentication.login(data).then((res) => {
-      if (localStorage.getItem('isApplied')) {
-        navigate('/apply');
-      }
+      navigate('/profile');
     });
   }
 
+  useEffect(() => {
+    const token = sessionStorage.getItem('access_token');
+    if (token) {
+      navigate('/profile');
+    }
+  }, [location]);
   return (
     <>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
