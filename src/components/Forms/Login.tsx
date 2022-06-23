@@ -4,6 +4,8 @@ import {InputWrapper} from '../InputWrapper/InputWrapper';
 import {Authentication} from '../../api/authentication';
 import Button from '../Button';
 import {User} from '../../api/users';
+import './Form.scss';
+
 
 type Props = {};
 
@@ -23,7 +25,7 @@ export function Login(props: Props) {
   return (
     <>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
-        <h1 className={'mb-20'}>Login User</h1>
+        <h1 className={'mb-20'} style={{color: '#000'}}>Login User</h1>
         <InputWrapper id="email" title="Email">
           <>
             <input id="email" {...register('email', {

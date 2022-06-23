@@ -26,7 +26,7 @@ export function Apply(props: Props) {
 
   return (
     <form className={'form'} onSubmit={handleSubmit(onSubmit)}>
-      <h1 className={'mb-20'}>Application Form</h1>
+      <h1 className={'mb-20'} style={{color: '#000'}} >Application Form</h1>
       <InputWrapper id="email" title="First Name">
         <>
           <input id="email" defaultValue="test" {...register('name', {
