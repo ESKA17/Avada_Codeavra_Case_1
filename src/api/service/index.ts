@@ -56,6 +56,14 @@ export class Requests {
 
   async #makeRequest(url: string, config: RequestConfig = {}) {
     try {
+      const token = sessionStorage.getItem('access_token');
+      if (token) {
+        if (config.headers) {
+          config.headers.append('Authorization', `Bearer ${token}`);
+        } else {
+          config.headers = new Headers({Authorization: `Bearer ${token}`});
+        }
+      }
       const response = await fetch(url, {...config});
       if (response.ok) return response.json();
       else if (response.status === 401 || response.status === 403) {

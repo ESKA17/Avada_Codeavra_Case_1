@@ -1,5 +1,4 @@
 import {Requests} from '../service';
-import {ROUTES} from '../../types/enums';
 import {ApplyInputs, LoginInputs, RegistrationInputs} from './authTypes';
 
 export class Authentication extends Requests {
@@ -14,9 +13,9 @@ export class Authentication extends Requests {
   async login(data: LoginInputs) {
     const path = '/auth';
     const result = await this.post(path, data);
-    if (result) {
-      console.log(result);
-      // window.location.replace(ROUTES.PROFILE);
+    if (result && result.token) {
+      sessionStorage.setItem('access_token', result.token);
+      // window.location.replace(ROUTES.HOME);
     }
   }
 
@@ -27,6 +26,16 @@ export class Authentication extends Requests {
 
   async apply(data: ApplyInputs) {
     const path = '/apply';
-    await this.post(path, null);
+    await this.post(path, data);
+  }
+
+  async uploadCv(data: File) {
+    const path = '/cv';
+    await this.post(path, data);
+  }
+
+  async getUsers(data: ApplyInputs) {
+    const path = '/users';
+    await this.get(path);
   }
 }

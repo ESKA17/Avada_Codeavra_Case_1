@@ -3,7 +3,6 @@ import {LoginInputs} from '../../api/authentication/authTypes';
 import {InputWrapper} from '../InputWrapper/InputWrapper';
 import {REGS} from '../../utils/regex';
 import {Authentication} from '../../api/authentication';
-import Button from '../Button';
 
 type Props = {};
 
@@ -16,9 +15,10 @@ export function Login(props: Props) {
     authentication.login(data).then((res) => console.log(res));
   }
 
-  const sendCookie = () => {
-    fetch('/users', {credentials: 'include'}).then(res => console.log(res));
-  };
+  // const sendCookie = () => {
+  //   const token = '';
+  //   fetch('http://localhost:8087/users').then(res => res.json()).then(res => console.log(res));
+  // };
   return (
     <>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -45,8 +45,6 @@ export function Login(props: Props) {
         </InputWrapper>
         <input className={'btn'} type="submit" />
       </form>
-      <Button onClick={sendCookie}>Send Cookie</Button>
     </>
-
   );
 };
