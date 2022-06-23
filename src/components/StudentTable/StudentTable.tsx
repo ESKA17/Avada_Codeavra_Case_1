@@ -100,7 +100,7 @@ export function DataTable() {
               <TableCell align="left"><Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={progress}
+                value={""}
                 label="Age"
                 onChange={handleChange}
               > 
