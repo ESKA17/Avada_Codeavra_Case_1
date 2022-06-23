@@ -7,9 +7,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select, {SelectChangeEvent} from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-
+import {useEffect, useState} from 'react';
+import {Authentication} from '../../api/authentication';
+import {User} from '../../api/users';
 
 
 function createData(
@@ -19,9 +21,9 @@ function createData(
   progress: string,
   track: string,
   email: string,
-  cv: string
+  cv: string,
 ) {
-  return { id, firstName, lastName, progress, track, email, cv };
+  return {id, firstName, lastName, progress, track, email, cv};
 }
 
 const rows = [
@@ -32,12 +34,28 @@ const rows = [
   createData(1, 'Aizada', 'Turarova', 'stepik', 'frontend', 'aizada.turarova@gmail.com', 'cv'),
 ];
 
-export  function DataTable() {
+export function DataTable() {
+  const [users, setUsers] = useState([]);
+  const screening = new Authentication();
+  const userData = new User();
+
+  async function getAllUsers() {
+    const data = await screening.getAll();
+    console.log(JSON.parse(data));
+  }
+
+  async function deleteUser(id) {
+    const screeningData = await userData.deleteUser(id);
+  }
+
+  useEffect(() => {
+    getAllUsers();
+  }, []);
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead >
-          <TableRow >
+      <Table sx={{minWidth: 650}} aria-label="simple table">
+        <TableHead>
+          <TableRow>
             <TableCell style={{fontWeight: 'bold'}} align="left">id</TableCell>
             <TableCell style={{fontWeight: 'bold'}} align="left">First name</TableCell>
             <TableCell style={{fontWeight: 'bold'}} align="left">Last name</TableCell>
@@ -52,9 +70,9 @@ export  function DataTable() {
           {rows.map((row) => (
             <TableRow
               // key={r}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              sx={{'&:last-child td, &:last-child th': {border: 0}}}
             >
-                <TableCell align="left" component="th" scope="row">
+              <TableCell align="left" component="th" scope="row">
                 {row.id}
               </TableCell>
               <TableCell align="left" component="th" scope="row">
@@ -62,22 +80,23 @@ export  function DataTable() {
               </TableCell>
               <TableCell align="left">{row.lastName}</TableCell>
               <TableCell align="left"><Select
-                                          labelId="demo-simple-select-label"
-                                          id="demo-simple-select"
-                                          value={""}
-                                          label="Age"
-                                          // onChange={}
-                                           >
-          <MenuItem value={10}>0</MenuItem>
-          <MenuItem value={20}>1</MenuItem>
-          <MenuItem value={30}>2</MenuItem>
-          <MenuItem value={30}>3</MenuItem>
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={''}
+                label="Age"
+                // onChange={}
+              >
+                <MenuItem value={10}>0</MenuItem>
+                <MenuItem value={20}>1</MenuItem>
+                <MenuItem value={30}>2</MenuItem>
+                <MenuItem value={30}>3</MenuItem>
 
-        </Select></TableCell>
+              </Select></TableCell>
               <TableCell align="left">{row.track}</TableCell>
               <TableCell align="left">{row.email}</TableCell>
               <TableCell align="left">{row.cv}</TableCell>
-              <TableCell align="left"><Button variant="outlined" color='error'>delete</Button></TableCell>
+              <TableCell align="left"><Button onClick={() => deleteUser(3)} variant="outlined"
+                                              color="error">delete</Button></TableCell>
 
             </TableRow>
           ))}

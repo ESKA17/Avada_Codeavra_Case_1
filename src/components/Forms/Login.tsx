@@ -5,6 +5,7 @@ import {Authentication} from '../../api/authentication';
 import Button from '../Button';
 import {User} from '../../api/users';
 import './Form.scss';
+import {Link, useNavigate} from 'react-router-dom';
 
 
 type Props = {};
@@ -12,16 +13,17 @@ type Props = {};
 export function Login(props: Props) {
   const {register, handleSubmit, watch, formState: {errors}} = useForm<LoginInputs>();
   const onSubmit: SubmitHandler<LoginInputs> = data => submit(data);
+  const navigate = useNavigate();
 
   function submit(data: LoginInputs) {
     const authentication = new Authentication();
-    authentication.login(data).then((res) => console.log(res));
+    authentication.login(data).then((res) => {
+      if (localStorage.getItem('isApplied')) {
+        navigate('/apply');
+      }
+    });
   }
 
-  const sendCookie = () => {
-    const user = new User()
-    user.getUsers()
-  };
   return (
     <>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -46,9 +48,9 @@ export function Login(props: Props) {
             {errors.password && <span>This password is required</span>}
           </>
         </InputWrapper>
+        <Link to={'/register'}>Not Registered?</Link>
         <input className={'btn'} type="submit" />
       </form>
-      <Button onClick={sendCookie}>Send Cookie</Button>
     </>
 
   );

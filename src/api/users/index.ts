@@ -15,14 +15,14 @@ export class User extends Requests {
     return  await this.get(path);
   }
 
-  async deleteUser(id: string) {
-    const path = '/delete';
+  async deleteUser(id: number) {
+    const path = `/delete?id=${id}`;
     await this.post(path, id);
   }
 
-  async changeStatus(data) {
-    const path = '/changeStatus';
-    await this.post(path, data);
+  async changeStatus(number) {
+    const path = `/changeStatus?param=${number}`;
+    await this.post(path, null);
   }
 
   async getStatus() {

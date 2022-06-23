@@ -1,52 +1,67 @@
 import './ProfileLayout.scss';
 import ProfileLHeader from '../ProfileHeader';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {Authentication} from '../../api/authentication';
 import {User} from '../../api/users';
 import {Requests} from '../../api/service';
+import Button from '../Button';
+import {useNavigate} from 'react-router-dom';
 
 
 type Props = {};
 
-const user = {
-  name: 'Aizada',
-  surname: 'Turarova',
-  email: 'aizada.turarova@gmail.com',
-  phone: '+7776-118-04-18',
-  track: 'Front-end',
-  age: '23',
-  status: 'Active applicant',
-};
+// const user = {
+//   name: 'Aizada',
+//   surname: 'Turarova',
+//   email: 'aizada.turarova@gmail.com',
+//   phone: '+7776-118-04-18',
+//   track: 'Front-end',
+//   age: '23',
+//   status: 'Active applicant',
+// };
 
 export function ProfileLayout(props: Props) {
+  const [isApply, setIsApply] = useState(false);
+  const [user, setUser] = useState({
+    name: 'Aizada',
+    surname: 'Turarova',
+    email: 'aizada.turarova@gmail.com',
+    phone: '+7776-118-04-18',
+    track: 'Front-end',
+    age: '23',
+    status: 'Active applicant',
+  });
+  const navigate = useNavigate();
   const screening = new Authentication();
   const userData = new User();
 
-  async function getStepikInfo() {
-    const request = new Requests();
-    const res = await fetch('https://stepik.org/api/course-grades?course=109158&user=467885153')
-      .then(res => res.json());
-    console.log('stepik', res);
-  }
+  // async function getStepikInfo() {
+  //   const request = new Requests();
+  //   const res = await fetch('https://stepik.org/api/course-grades?course=109158&user=467885153')
+  //     .then(res => res.json());
+  //   console.log('stepik', res);
+  // }
 
   async function getUserInfo() {
     const data = await userData.getUsers();
   }
 
+
   async function getUserStatus() {
     const status = await userData.getStatus();
+    userData.changeStatus(1);
   }
 
   async function getUserCv() {
     const screeningData = await screening.getScreeningData();
-    console.log(screeningData);
+    setUser(screeningData);
   }
+
 
   useEffect(() => {
     getUserInfo();
     getUserCv();
     getUserStatus();
-    // getStepikInfo();
   }, []);
   return (
     <div className={'profile-layout'}>
@@ -60,7 +75,7 @@ export function ProfileLayout(props: Props) {
           <div className="timeline">
             <div className="timeline-line"></div>
             <div className="timeline-dots">
-              <div className="dot-sz">
+              <div className="dot-sz" onClick={() => setIsApply((state) => !state)}>
                 <div className="dot"><img src="/images/doc.png" alt="logo" /></div>
                 CV Screening
               </div>
@@ -78,6 +93,10 @@ export function ProfileLayout(props: Props) {
               </div>
               <div className="dot-last"><img src="/images/yay.png" alt="logo" /></div>
             </div>
+          </div>
+
+          <div>
+            <Button onClick={() => navigate('/apply')}>Apply</Button>
           </div>
 
         </div>

@@ -17,7 +17,8 @@ export class Requests {
 
   async get(path: string) {
     const url = this.baseUrl + path;
-    return await this.#makeRequest(url);
+    const res = await this.#makeRequest(url);
+    return JSON.parse(res);
   }
 
   async post<T>(path: string, data: T) {

@@ -15,7 +15,7 @@ export class Authentication extends Requests {
     const result = await this.post(path, data);
     if (result) {
       sessionStorage.setItem('access_token', result);
-      console.log(result)
+      console.log(result);
       console.log(sessionStorage.getItem('access_token'));
       // window.location.replace(ROUTES.HOME);
     }
@@ -30,10 +30,15 @@ export class Authentication extends Requests {
   async sendScreeningData(data: ApplyInputs) {
     const path = '/screening';
     await this.post(path, data);
+    localStorage.setItem('isApplied', '');
   }
 
   async getScreeningData() {
     const path = '/screening';
+    return await this.get(path);
+  }
+  async getAll() {
+    const path = '/screening/all';
     return await this.get(path);
   }
 

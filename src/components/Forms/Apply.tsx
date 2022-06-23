@@ -18,7 +18,6 @@ export function Apply(props: Props) {
   }
 
   function uploadFormData(file) {
-    console.log(file);
     const formData = new FormData();
     formData.append('file', file);
     authentication.uploadCv(formData);
