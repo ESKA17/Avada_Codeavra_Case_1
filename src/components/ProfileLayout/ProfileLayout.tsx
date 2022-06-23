@@ -18,7 +18,7 @@ const user={
 export function ProfileLayout(props: Props) {
   return (
     <div className={'profile-layout'}>
-      <ProfileLHeader/>
+      <ProfileLHeader path='/images/avatar.png'/>
       <div className='profile-container'>
         <div className='student-progress'>
           <div>Этапы отбора на Jusan Singularity</div>

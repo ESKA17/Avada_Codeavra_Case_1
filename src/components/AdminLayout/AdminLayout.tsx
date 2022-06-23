@@ -1,5 +1,5 @@
 import {Outlet} from 'react-router-dom';
-import Header from '../Header';
+import ProfileHeader from '../ProfileHeader';
 import './AdminLayout.scss';
 
 type Props = {};
@@ -7,7 +7,7 @@ type Props = {};
 export function AdminLayout(props: Props) {
   return (
     <div className="admin-layout">
-      <Header />
+      <ProfileHeader path="/images/admin.png"/>
       <Outlet />
     </div>
   );
