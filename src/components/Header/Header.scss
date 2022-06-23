@@ -18,10 +18,11 @@
     display: flex;
     align-items: center;
   }
-    font-size: 20px;
-    gap: 7rem;
-    font-weight: 600;
-    line-height: 30px;
+
+  font-size: 20px;
+  gap: 7rem;
+  font-weight: 600;
+  line-height: 30px;
 
   .link {
     cursor: pointer;
@@ -44,11 +45,13 @@
       width: 100px;
       border-radius: 50%;
       object-fit: cover;
-    .link {
-      color: #2E487C;
 
-      &:hover{
-        color: #D26032;
+      .link {
+        color: #2E487C;
+
+        &:hover {
+          color: #D26032;
+        }
       }
     }
   }
@@ -60,5 +63,4 @@
       display: none;
     }
   }
-
 }
