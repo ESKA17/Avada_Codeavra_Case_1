@@ -57,7 +57,7 @@
             height: 115px;
             width: 115px;
             border-radius: 100px;
-            z-index: 1000px;
+            z-index: 1000;
             background: #FFFFFF;
             border: 1px solid #FFFFFF;
             box-shadow: 0px 0px 10px 2px #E69AA1;
@@ -73,8 +73,10 @@
             }
 
           }
+          .dot.active {
+            box-shadow: 0px 0px 10px 2px forestgreen;
+          }
         }
-
 
         .dot-last {
           height: 120px;
@@ -163,154 +165,154 @@
     align-items: flex-start;
     gap: 1.5rem;
 
-     .student-progress {
-    width: 70%;
-    height: 650px;
-    border: 1px solid #FFFFFF;
-    box-shadow: 3px 4px 15px rgba(0, 0, 0, 0.25);
-    border-radius: 36px;
-    padding: 4rem;
-    font-size: 20px;
-    font-weight: 700;
+    .student-progress {
+      width: 70%;
+      height: 650px;
+      border: 1px solid #FFFFFF;
+      box-shadow: 3px 4px 15px rgba(0, 0, 0, 0.25);
+      border-radius: 36px;
+      padding: 4rem;
+      font-size: 20px;
+      font-weight: 700;
 
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
-    .progress-subheading {
-      font-size: 16px;
-      font-weight: 500;
-      margin-top: 1rem;
-
-     
-    }
-
-    .timeline {
-      font-size: 12px;
-      font-weight: 600;
-
-      height: 80%;
-      padding: 1rem 3rem;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      gap: 1rem;
 
-      .timeline-line {
-        height: 8px;
-        width: 100%;
-        background-color: #E69AA1;
+      .progress-subheading {
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 1rem;
+
+
       }
 
-      .timeline-dots {
+      .timeline {
+        font-size: 12px;
+        font-weight: 600;
+
+        height: 80%;
+        padding: 1rem 3rem;
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
-        margin-top: -50px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-        .dot-sz {
-          text-align: center;
-          width: 125px;
+        .timeline-line {
+          height: 8px;
+          width: 100%;
+          background-color: #E69AA1;
+        }
 
-          .dot {
-            height: 115px;
-            width: 115px;
+        .timeline-dots {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 100%;
+          margin-top: -50px;
+
+          .dot-sz {
+            text-align: center;
+            width: 125px;
+
+            .dot {
+              height: 115px;
+              width: 115px;
+              border-radius: 100px;
+              z-index: 1000px;
+              background: #FFFFFF;
+              border: 1px solid #FFFFFF;
+              box-shadow: 0px 0px 10px 2px #E69AA1;
+
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              margin-bottom: 1rem;
+
+              img {
+                display: block;
+              }
+
+            }
+          }
+
+
+          .dot-last {
+            height: 120px;
+            width: 120px;
             border-radius: 100px;
             z-index: 1000px;
             background: #FFFFFF;
             border: 1px solid #FFFFFF;
-            box-shadow: 0px 0px 10px 2px #E69AA1;
 
             display: flex;
             justify-content: center;
             align-items: center;
 
-            margin-bottom: 1rem;
-
-            img {
-              display: block;
-            }
-
           }
         }
+      }
+    }
 
+    .student-info {
+      width: 25%;
+      height: 75vh;
+      border: 1px solid #FFFFFF;
+      box-shadow: 3px 4px 15px rgba(0, 0, 0, 0.25);
+      border-radius: 36px;
 
-        .dot-last {
-          height: 120px;
-          width: 120px;
+      .student-info-header {
+        height: 25%;
+        background: linear-gradient(157deg, rgba(214, 183, 240, 1) 0%, rgba(236, 123, 103, 1) 80%, rgba(231, 118, 106, 1) 100%);
+        border-top-left-radius: 36px;
+        border-top-right-radius: 36px;
+      }
+
+      .student-avatar {
+        z-index: 999;
+        margin-top: -100px;
+        height: 199px;
+        width: 205px;
+        border-radius: 100px;
+        margin: -100px auto;
+
+        .avatar-img {
+          width: 100%;
           border-radius: 100px;
-          z-index: 1000px;
-          background: #FFFFFF;
-          border: 1px solid #FFFFFF;
-
-          display: flex;
-          justify-content: center;
-          align-items: center;
 
         }
       }
-    }
-  }
 
-  .student-info {
-    width: 25%;
-    height: 75vh;
-    border: 1px solid #FFFFFF;
-    box-shadow: 3px 4px 15px rgba(0, 0, 0, 0.25);
-    border-radius: 36px;
+      .student-data {
+        color: #C577B6;
+        font-size: 13px;
+        line-height: 50px;
+        margin-top: 80px;
+        padding: 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-    .student-info-header {
-      height: 25%;
-      background: linear-gradient(157deg, rgba(214, 183, 240, 1) 0%, rgba(236, 123, 103, 1) 80%, rgba(231, 118, 106, 1) 100%);
-      border-top-left-radius: 36px;
-      border-top-right-radius: 36px;
-    }
+        .user-name {
+          margin: auto;
+          margin-bottom: 30px;
+          font-size: 24px;
+          font-weight: 500;
+          color: #772467;
+        }
 
-    .student-avatar {
-      z-index: 999;
-      margin-top: -100px;
-      height: 199px;
-      width: 205px;
-      border-radius: 100px;
-      margin: -100px auto;
+        span {
+          display: inline-block;
+          margin-left: 1rem;
+          color: #000;
 
-      .avatar-img {
-        width: 100%;
-        border-radius: 100px;
-
-      }
-    }
-
-    .student-data {
-      color: #C577B6;
-      font-size: 13px;
-      line-height: 50px;
-      margin-top: 80px;
-      padding: 4rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      .user-name {
-        margin: auto;
-        margin-bottom: 30px;
-        font-size: 24px;
-        font-weight: 500;
-        color: #772467;
+        }
       }
 
-      span {
-        display: inline-block;
-        margin-left: 1rem;
-        color: #000;
 
-      }
     }
 
-
-  }
-    
   }
 
 }

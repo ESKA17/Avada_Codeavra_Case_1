@@ -4,21 +4,28 @@ import {useForm, SubmitHandler} from 'react-hook-form';
 import {RegistrationInputs} from '../../api/authentication/authTypes';
 import {Authentication} from '../../api/authentication';
 import './Form.scss';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
+import {useEffect} from 'react';
 
 type Props = {};
 
 export function Register(props: Props) {
   const {register, handleSubmit, watch, formState: {errors}} = useForm<RegistrationInputs>();
   const onSubmit: SubmitHandler<RegistrationInputs> = data => submit(data);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation();
 
   function submit(data: RegistrationInputs) {
     const authentication = new Authentication();
     authentication.register(data).then((res) => navigate('/login'));
   }
 
-  // function redirect()
+  useEffect(() => {
+    const token = sessionStorage.getItem('access_token');
+    if (token) {
+      navigate('/profile');
+    }
+  }, [location]);
 
   return (
     <form className={'form'} onSubmit={handleSubmit(onSubmit)}>

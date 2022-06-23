@@ -3,25 +3,12 @@ import ProfileLHeader from '../ProfileHeader';
 import {useEffect, useState} from 'react';
 import {Authentication} from '../../api/authentication';
 import {User} from '../../api/users';
-import {Requests} from '../../api/service';
 import Button from '../Button';
 import {useLocation, useNavigate} from 'react-router-dom';
 
-
 type Props = {};
 
-// const user = {
-//   name: 'Aizada',
-//   surname: 'Turarova',
-//   email: 'aizada.turarova@gmail.com',
-//   phone: '+7776-118-04-18',
-//   track: 'Front-end',
-//   age: '23',
-//   status: 'Active applicant',
-// };
-
 export function ProfileLayout(props: Props) {
-  const [isApply, setIsApply] = useState(false);
   const [user, setUser] = useState({
     name: 'Aizada',
     surname: 'Turarova',
@@ -29,7 +16,7 @@ export function ProfileLayout(props: Props) {
     phone: '+7776-118-04-18',
     track: 'Front-end',
     age: '23',
-    status: 'Active applicant',
+    status: 0,
   });
   const navigate = useNavigate();
   const screening = new Authentication();
@@ -58,6 +45,22 @@ export function ProfileLayout(props: Props) {
     setUser(screeningData);
   }
 
+  function getStatusText(){
+    switch (user.status){
+      case 0: {
+        return 'Uploading CV'
+      }
+      case 1: {
+        return 'Passing Stepik'
+      }
+      case 2: {
+        return 'Passing Easy Hire'
+      }
+      case 3: {
+        return 'Passing Interview'
+      }
+    }
+  }
 
   useEffect(() => {
     getUserInfo();
@@ -71,6 +74,7 @@ export function ProfileLayout(props: Props) {
       navigate('/login');
     }
   }, [location]);
+
   return (
     <div className={'profile-layout'}>
       <ProfileLHeader path="/images/avatar.png" />
@@ -83,20 +87,23 @@ export function ProfileLayout(props: Props) {
           <div className="timeline">
             <div className="timeline-line"></div>
             <div className="timeline-dots">
-              <div className="dot-sz" onClick={() => setIsApply((state) => !state)}>
+              <div className={`dot-sz ${user.status === 0 ? 'active' : ''}`}>
                 <div className="dot"><img src="/images/doc.png" alt="logo" /></div>
                 CV Screening
               </div>
               <div className="dot-sz">
-                <div className="dot"><img src="/images/stepik.png" alt="logo" /></div>
+                <div className={`dot ${user.status === 1 ? 'active' : ''}`}><img src="/images/stepik.png" alt="logo" />
+                </div>
                 Java programming intensive on Stepik platform
               </div>
               <div className="dot-sz">
-                <div className="dot"><img src="/images/easyhire.png" alt="logo" /></div>
+                <div className={`dot ${user.status === 2 ? 'active' : ''}`}><img src="/images/easyhire.png"
+                                                                                 alt="logo" /></div>
                 Auto interview (both coding and behavioral questions) on EasyHire platform
               </div>
               <div className="dot-sz">
-                <div className="dot"><img src="/images/zoom.png" alt="logo" /></div>
+                <div className={`dot ${user.status === 3 ? 'active' : ''}`}><img src="/images/zoom.png" alt="logo" />
+                </div>
                 Zoom interview with bank representatives
               </div>
               <div className="dot-last"><img src="/images/yay.png" alt="logo" /></div>
@@ -120,7 +127,7 @@ export function ProfileLayout(props: Props) {
             <div>Phone: <span>+7776-118-04-18</span></div>
             <div>Track: <span>FrontEnd</span></div>
             <div>Age: <span>{user.age}</span></div>
-            <div>Status: <span>{user.status}</span></div>
+            <div>Status: <span>{getStatusText()}</span></div>
           </div>
         </div>
       </div>
