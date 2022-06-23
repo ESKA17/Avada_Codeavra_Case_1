@@ -14,11 +14,13 @@ export enum TRACKS {
   ANDROID,
   DEVOPS
 }
+
 export interface ApplyInputs {
   firstName: string,
   lastName: string,
   middleName: string,
   age: number,
   track: TRACKS,
+  isDiploma: 0 | 1,
   cv: File
 }

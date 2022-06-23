@@ -14,6 +14,7 @@ export function Apply(props: Props) {
   function submit(data: ApplyInputs) {
     const authentication = new Authentication();
     authentication.apply(data).then((res) => console.log(res));
+    authentication.uploadCv(data.cv).then((res) => console.log(res));
   }
 
   return (
@@ -53,7 +54,7 @@ export function Apply(props: Props) {
       </InputWrapper>
       <InputWrapper id="age" title="Your Age">
         <>
-          <input type='number' id="passwordConfirm" {...register('age', {
+          <input type="number" id="passwordConfirm" {...register('age', {
             required: true,
             max: 2,
             min: 2,
@@ -70,7 +71,7 @@ export function Apply(props: Props) {
       {/*  </>*/}
       {/*</InputWrapper>*/}
       <InputWrapper id="track" title="Choose your track">
-        <select {...register("track")}>
+        <select {...register('track')}>
           <option value={TRACKS.FRONTEND}>FRONTEND</option>
           <option value={TRACKS.BACKEND}>BACKEND</option>
           <option value={TRACKS.IOS}>IOS</option>
@@ -81,7 +82,7 @@ export function Apply(props: Props) {
 
       <InputWrapper id="cv" title="Upload CV">
         <>
-          <input type='file' id="passwordConfirm" {...register('cv', {
+          <input type="file" id="passwordConfirm" {...register('cv', {
             required: true,
           })} />
           {errors.cv && <span>This cv is required</span>}
