@@ -15,6 +15,7 @@ export class Authentication extends Requests {
     const result = await this.post(path, data);
     if (result) {
       sessionStorage.setItem('access_token', result);
+      console.log(result)
       console.log(sessionStorage.getItem('access_token'));
       // window.location.replace(ROUTES.HOME);
     }
