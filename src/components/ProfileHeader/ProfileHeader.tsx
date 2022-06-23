@@ -24,9 +24,9 @@ export function ProfileHeader(props: Props) {
 
       <div className={'profile-header-navs'}>
 
-        <div className="link" style={{fontWeight: 700}} >Main page</div>
-        <div onClick={()=>logout} className="link" style={{fontWeight: 700}} >Log out</div>
-        <div className="link" ><img className="avatar" src={path} alt="avatar" /></div>
+       <Link to="/"> <div className="link" style={{fontWeight: 700}} >Main page</div></Link>
+       <Link to="/"> <div onClick={()=>logout} className="link" style={{fontWeight: 700}} >Log out</div> </Link>
+       <Link to="/"> <div className="link" ><img className="avatar" src={path} alt="avatar" /></div> </Link>
       </div>
     </header>
   );

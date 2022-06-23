@@ -34,3 +34,4 @@ export function AdminLayout(props: Props) {
     </div>
   );
 }
+
