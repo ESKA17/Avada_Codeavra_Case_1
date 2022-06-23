@@ -3,6 +3,7 @@ import ProfileLHeader from '../ProfileHeader';
 import {useEffect} from 'react';
 import {Authentication} from '../../api/authentication';
 import {User} from '../../api/users';
+import {Requests} from '../../api/service';
 
 
 type Props = {};
@@ -18,14 +19,37 @@ const user = {
 };
 
 export function ProfileLayout(props: Props) {
+  const screening = new Authentication();
+  const userData = new User();
+
+  async function getStepikInfo() {
+    const request = new Requests();
+    const res = await fetch('https://stepik.org/api/course-grades?course=109158&user=467885153')
+      .then(res => res.json());
+    console.log('stepik', res);
+  }
+
   async function getUserInfo() {
-    const user = new User();
-    const data = await user.getUsers();
-    console.log(data)
+    const data = await userData.getUsers();
+
+    // console.log(data);
+  }
+
+  async function getUserStatus() {
+    const status = await userData.getStatus();
+    // console.log(status);
+  }
+
+  async function getUserCv() {
+    const screeningData = await screening.getScreeningData();
+    console.log(screeningData);
   }
 
   useEffect(() => {
-    getUserInfo();
+    // getUserInfo();
+    // getUserCv();
+    // getUserStatus();
+    getStepikInfo();
   }, []);
   return (
     <div className={'profile-layout'}>

@@ -30,9 +30,14 @@ export class Authentication extends Requests {
     await this.post(path, data);
   }
 
-  async uploadCv(data: string | ArrayBuffer) {
+  async getScreeningData() {
+    const path = '/screening';
+    return await this.get(path);
+  }
+
+  async uploadCv(data: FormData) {
     const path = '/upload';
-    await this.post(path, data);
+    await this.postFile(path, data);
   }
 
   async getCVs() {

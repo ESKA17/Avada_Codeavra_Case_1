@@ -14,18 +14,14 @@ export function Apply(props: Props) {
 
   async function submit(data: ApplyInputs) {
     await authentication.sendScreeningData({...data, isDiploma: data.isDiploma ? 1 : 0});
-    getBase64(data.cv[0]);
+    uploadFormData(data.cv[0]);
   }
 
-  function getBase64(file) {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      authentication.uploadCv(reader.result);
-    };
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
+  function uploadFormData(file) {
+    console.log(file);
+    const formData = new FormData();
+    formData.append('file', file);
+    authentication.uploadCv(formData);
   }
 
   return (
@@ -83,7 +79,7 @@ export function Apply(props: Props) {
       <InputWrapper id="cv" title="Upload CV">
         <>
           <input type="file" id="cv" {...register('cv', {
-            required: true,
+            // required: true,
           })} />
           {errors.cv && <span>This cv is required</span>}
         </>

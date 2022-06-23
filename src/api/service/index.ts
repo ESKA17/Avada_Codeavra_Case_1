@@ -31,6 +31,18 @@ export class Requests {
     return await this.#makeRequest(url, config);
   }
 
+  async postFile(path, formData) {
+    const url = this.baseUrl + path;
+    // const contentType = {'Content-Type': 'multipart/form-data'};
+    // const headers = new Headers(contentType);
+    const config = {
+      method: 'POST',
+      // headers,
+      body: formData,
+    };
+    return await this.#makeRequest(url, config);
+  }
+
   async postUrlEncoded(path: string, data: Record<string, string>) {
     const url = this.baseUrl + path;
     const contentType = {'Content-Type': 'application/x-www-form-urlencoded'};
@@ -56,7 +68,8 @@ export class Requests {
 
   async #makeRequest(url: string, config: RequestConfig = {}) {
     try {
-      const token = sessionStorage.getItem('access_token');
+      // const token = sessionStorage.getItem('access_token');
+      const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaXphZGFAZ21haWwuY29tIiwiZXhwIjoxNjU3MjE2ODAwfQ.HpQsajMJqHGbm-qnKvWRs63qyMl2ZIqpQZmh4dzTSLiBrQpEYzyAlemtYWXC5UgwIsAPexW0zyzrKReWRTUIFA'
       if (token) {
         if (config.headers) {
           config.headers.append('token', token);
@@ -65,10 +78,12 @@ export class Requests {
         }
       }
       const response = await fetch(url, {...config});
-      if (response.ok) return JSON.parse(await response.text());
-      else if (response.status === 401 || response.status === 403) {
+      if (response.ok) {
+        console.log(await response.text());
+        return await response.text();
+      } else if (response.status === 401 || response.status === 403) {
         // window.location.replace(ROUTES.LOGIN);
-      } else alert(response.statusText);
+      } else console.log(response.statusText);
     } catch (e) {
       console.log('error', e);
       // window.location.replace(ROUTES.ERROR_500);

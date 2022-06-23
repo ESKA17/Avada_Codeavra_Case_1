@@ -24,4 +24,9 @@ export class User extends Requests {
     const path = '/changeStatus';
     await this.post(path, data);
   }
+
+  async getStatus() {
+    const path = '/getStatus';
+    return await this.get(path);
+  }
 }
