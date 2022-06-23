@@ -16,12 +16,17 @@ export class User extends Requests {
   }
 
   async deleteUser(id: string) {
-    const path = '';
+    const path = '/delete';
     await this.post(path, id);
   }
 
   async changeStatus(data) {
     const path = '/changeStatus';
     await this.post(path, data);
+  }
+
+  async getStatus() {
+    const path = '/getStatus';
+    return await this.get(path);
   }
 }

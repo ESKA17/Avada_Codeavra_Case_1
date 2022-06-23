@@ -22,5 +22,5 @@ export interface ApplyInputs {
   age: number,
   track: TRACKS,
   isDiploma: 0 | 1,
-  cv: File
+  cv?: File
 }

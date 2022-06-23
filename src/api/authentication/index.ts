@@ -14,14 +14,16 @@ export class Authentication extends Requests {
     const path = '/auth';
     const result = await this.post(path, data);
     if (result) {
-      console.log(result);
       sessionStorage.setItem('access_token', result);
+      console.log(result)
+      console.log(sessionStorage.getItem('access_token'));
       // window.location.replace(ROUTES.HOME);
     }
   }
 
   async logout() {
     const path = '/logout';
+    sessionStorage.removeItem('access_token');
     await this.post(path, null);
   }
 
@@ -30,9 +32,14 @@ export class Authentication extends Requests {
     await this.post(path, data);
   }
 
-  async uploadCv(data: string | ArrayBuffer) {
+  async getScreeningData() {
+    const path = '/screening';
+    return await this.get(path);
+  }
+
+  async uploadCv(data: FormData) {
     const path = '/upload';
-    await this.post(path, data);
+    await this.postFile(path, data);
   }
 
   async getCVs() {
