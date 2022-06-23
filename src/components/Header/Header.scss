@@ -5,11 +5,17 @@
   align-items: center;
   width: 100%;
 
-  .logo-title {
-    font-weight: bold;
-    font-size: 3rem;
-    align-self: center;
+  .row{
     margin-left: 3rem;
+    height: 90px;
+  }
+  .logo-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 50px;
+    align-self: center;
+    margin-left: 2rem;
     color: #D26032;
     max-width: 200px;
   }
@@ -26,9 +32,11 @@
 
   .link {
     cursor: pointer;
-    margin: 0 10px;
-    font-weight: 500;
-    font-size: 1.5rem;
+    margin: 0 2rem;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #2E487C;
 
     &:hover {
       color: #772467;
