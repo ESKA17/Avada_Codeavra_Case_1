@@ -10,12 +10,12 @@ type Props = {};
 
 export function ProfileLayout(props: Props) {
   const [user, setUser] = useState({
-    name: 'Aizada',
-    surname: 'Turarova',
-    email: 'aizada.turarova@gmail.com',
-    phone: '+7776-118-04-18',
-    track: 'Front-end',
-    age: '23',
+    name: 'Foo',
+    surname: 'Bar',
+    email: 'foo.bar@gmail.com',
+    phone: '+7 xxx-xxx-xx-xx',
+    track: 'FooBar',
+    age: '00',
     status: 0,
   });
   const navigate = useNavigate();
@@ -42,7 +42,8 @@ export function ProfileLayout(props: Props) {
 
   async function getUserCv() {
     const screeningData = await screening.getScreeningData();
-    setUser(screeningData);
+    setUser((state)=>({...state, screeningData}));
+    console.log(screeningData)
   }
 
   function getStatusText(){
@@ -77,7 +78,7 @@ export function ProfileLayout(props: Props) {
 
   return (
     <div className={'profile-layout'}>
-      <ProfileLHeader path="/images/avatar.png" />
+      <ProfileLHeader path="/images/man.png" />
       <div className="profile-container">
         <div className="student-progress">
           <div>Этапы отбора на Jusan Singularity</div>
@@ -119,13 +120,13 @@ export function ProfileLayout(props: Props) {
           <div className="student-info-header">
           </div>
           <div className="student-avatar">
-            <img className="avatar-img" src="/images/photo.jpg" alt="avatar" />
+            <img className="avatar-img" src="/images/man.png" alt="avatar" />
           </div>
           <div className="student-data">
             <div className="user-name">{user.name} {user.surname}</div>
             <div>E-mail: <span>{user.email}</span></div>
-            <div>Phone: <span>+7776-118-04-18</span></div>
-            <div>Track: <span>FrontEnd</span></div>
+            <div>Phone: <span>{user.phone}</span></div>
+            <div>Track: <span>{user.track}</span></div>
             <div>Age: <span>{user.age}</span></div>
             <div>Status: <span>{getStatusText()}</span></div>
           </div>

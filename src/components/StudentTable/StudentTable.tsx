@@ -37,6 +37,8 @@ import {User} from '../../api/users';
 
 export function DataTable() {
   const [users, setUsers] = useState([]);
+  const [progress, setProgress] = useState(0);
+
   const screening = new Authentication();
   const userData = new User();
 
@@ -48,11 +50,13 @@ export function DataTable() {
 
   async function deleteUser(id) {
     const screeningData = await userData.deleteUser(id);
+    window.location.reload();
   }
 
   const handleChange=(e)=>{
     console.log(e);
     userData.changeStatus(e.target.value);
+    setProgress(e.target.value);
   }
   
 
@@ -80,7 +84,7 @@ export function DataTable() {
         </TableHead>
         <TableBody>
           {users.map((row) => (
-            <TableRow
+            <TableRow key={row.id}
               sx={{'&:last-child td, &:last-child th': {border: 0}}}
             >
               <TableCell align="left" component="th" scope="row">
@@ -96,10 +100,10 @@ export function DataTable() {
               <TableCell align="left"><Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={''}
+                value={progress}
                 label="Age"
                 onChange={handleChange}
-              >
+              > 
                 <MenuItem value={0}>CV</MenuItem>
                 <MenuItem value={1}>Stepik</MenuItem>
                 <MenuItem value={2}>Easyhire</MenuItem>
@@ -109,7 +113,7 @@ export function DataTable() {
               {/* <TableCell align="left">{row.track}</TableCell> */}
               <TableCell align="left">{row.email}</TableCell>
               {/* <TableCell align="left">{row.cv}</TableCell> */}
-              <TableCell align="left"><Button onClick={() => deleteUser(3)} variant="outlined"
+              <TableCell align="left"><Button onClick={() => deleteUser(row.id)} variant="outlined"
                                               color="error">delete</Button></TableCell>
 
             </TableRow>
