@@ -5,7 +5,7 @@ import {Authentication} from '../../api/authentication';
 import {User} from '../../api/users';
 import {Requests} from '../../api/service';
 import Button from '../Button';
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 
 
 type Props = {};
@@ -34,6 +34,7 @@ export function ProfileLayout(props: Props) {
   const navigate = useNavigate();
   const screening = new Authentication();
   const userData = new User();
+  const location = useLocation();
 
   // async function getStepikInfo() {
   //   const request = new Requests();
@@ -49,7 +50,7 @@ export function ProfileLayout(props: Props) {
 
   async function getUserStatus() {
     const status = await userData.getStatus();
-    userData.changeStatus(1);
+    userData.changeStatus(2);
   }
 
   async function getUserCv() {
@@ -63,6 +64,13 @@ export function ProfileLayout(props: Props) {
     getUserCv();
     getUserStatus();
   }, []);
+
+  useEffect(() => {
+    const token = sessionStorage.getItem('access_token');
+    if (!token) {
+      navigate('/login');
+    }
+  }, [location]);
   return (
     <div className={'profile-layout'}>
       <ProfileLHeader path="/images/avatar.png" />
@@ -96,7 +104,7 @@ export function ProfileLayout(props: Props) {
           </div>
 
           <div>
-            <Button onClick={() => navigate('/apply')}>Apply</Button>
+            <Button onClick={() => navigate('/apply')}>Finish The Application Form</Button>
           </div>
 
         </div>
@@ -109,8 +117,8 @@ export function ProfileLayout(props: Props) {
           <div className="student-data">
             <div className="user-name">{user.name} {user.surname}</div>
             <div>E-mail: <span>{user.email}</span></div>
-            <div>Phone: <span>{user.phone}</span></div>
-            <div>Track: <span>{user.track}</span></div>
+            <div>Phone: <span>+7776-118-04-18</span></div>
+            <div>Track: <span>FrontEnd</span></div>
             <div>Age: <span>{user.age}</span></div>
             <div>Status: <span>{user.status}</span></div>
           </div>
