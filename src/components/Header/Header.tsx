@@ -12,10 +12,12 @@ export function Header(props: Props) {
       </Link>
 
       <div className={'links'}>
-        <Link to={'/info/about'} className="link">О программе</Link>
+        <Link to={'/info/about'} className="link">Программа</Link>
         <Link to={'/info/stuff'} className="link">Команда</Link>
         <Link to={'/info/requirements'} className="link">Требования</Link>
         <Link to={'/info/contacts'} className="link">Контакты</Link>
+        <Link to={'/login'} className="link">Войти</Link>
+
 
       </div>
     </header>
