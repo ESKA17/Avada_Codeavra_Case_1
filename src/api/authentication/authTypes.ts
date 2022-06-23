@@ -16,11 +16,10 @@ export enum TRACKS {
 }
 
 export interface ApplyInputs {
-  firstName: string,
-  lastName: string,
-  middleName: string,
+  name: string,
+  surname: string,
+  fatherName: string,
   age: number,
-  track: TRACKS,
-  isDiploma: 0 | 1,
+  studyDegree: TRACKS,
   cv?: File
 }

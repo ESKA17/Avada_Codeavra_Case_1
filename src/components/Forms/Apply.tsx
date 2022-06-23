@@ -13,7 +13,7 @@ export function Apply(props: Props) {
   const authentication = new Authentication();
 
   async function submit(data: ApplyInputs) {
-    await authentication.sendScreeningData({...data, isDiploma: data.isDiploma ? 1 : 0});
+    await authentication.sendScreeningData(data);
     uploadFormData(data.cv[0]);
   }
 
@@ -29,34 +29,34 @@ export function Apply(props: Props) {
       <h1 className={'mb-20'}>Application Form</h1>
       <InputWrapper id="email" title="First Name">
         <>
-          <input id="email" defaultValue="test" {...register('firstName', {
+          <input id="email" defaultValue="test" {...register('name', {
             required: true,
             pattern: REGS.firstName,
             maxLength: 30,
           })} />
-          {errors.firstName && <span>This firstName is required</span>}
+          {errors.name && <span>This firstName is required</span>}
         </>
       </InputWrapper>
 
       <InputWrapper id="password" title="Middle Name">
         <>
-          <input id="password" {...register('middleName', {
+          <input id="password" {...register('fatherName', {
             required: true,
             pattern: REGS.middleName,
             maxLength: 30,
           })} />
-          {errors.middleName && <span>This middleName is required</span>}
+          {errors.fatherName && <span>This middleName is required</span>}
         </>
       </InputWrapper>
 
       <InputWrapper id="passwordConfirm" title="Last Name">
         <>
-          <input id="passwordConfirm" {...register('lastName', {
+          <input id="passwordConfirm" {...register('surname', {
             required: true,
             pattern: REGS.lastName,
             maxLength: 30,
           })} />
-          {errors.lastName && <span>This lastName is required</span>}
+          {errors.surname && <span>This lastName is required</span>}
         </>
       </InputWrapper>
       <InputWrapper id="age" title="Your Age">
@@ -68,7 +68,7 @@ export function Apply(props: Props) {
         </>
       </InputWrapper>
       <InputWrapper id="track" title="Choose your track">
-        <select {...register('track')}>
+        <select {...register('studyDegree')}>
           <option value={TRACKS.FRONTEND}>FRONTEND</option>
           <option value={TRACKS.BACKEND}>BACKEND</option>
           <option value={TRACKS.IOS}>IOS</option>
@@ -85,8 +85,6 @@ export function Apply(props: Props) {
         </>
       </InputWrapper>
 
-      <input type="checkbox" {...register('isDiploma', {required: true})} />
-      {errors.isDiploma && <span>This cv is required</span>}
       <input className={'btn'} type="submit" />
     </form>
   );
