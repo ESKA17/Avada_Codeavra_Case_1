@@ -14,7 +14,7 @@ export function ProfileLayout(props: Props) {
     surname: 'Bar',
     email: 'foo.bar@gmail.com',
     phone: '+7 xxx-xxx-xx-xx',
-    track: 'FooBar',
+    studyDegree: 'FooBar',
     age: '00',
     status: 0,
   });
@@ -42,8 +42,7 @@ export function ProfileLayout(props: Props) {
 
   async function getUserCv() {
     const screeningData = await screening.getScreeningData();
-    setUser((state)=>({...state, screeningData}));
-    console.log(screeningData)
+    setUser((state)=>({...state, ...screeningData}));
   }
 
   function getStatusText(){
@@ -126,7 +125,7 @@ export function ProfileLayout(props: Props) {
             <div className="user-name">{user.name} {user.surname}</div>
             <div>E-mail: <span>{user.email}</span></div>
             <div>Phone: <span>{user.phone}</span></div>
-            <div>Track: <span>{user.track}</span></div>
+            <div>Track: <span>{user.studyDegree}</span></div>
             <div>Age: <span>{user.age}</span></div>
             <div>Status: <span>{getStatusText()}</span></div>
           </div>
