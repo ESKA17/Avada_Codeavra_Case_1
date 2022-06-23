@@ -20,8 +20,12 @@ export function Login(props: Props) {
   function submit(data: LoginInputs) {
     const authentication = new Authentication();
     authentication.login(data).then((res) => {
-
-      navigate('/profile');
+      if(data.email==="admin"){
+        navigate('/admin');
+      }
+      else{
+        navigate('/profile');
+      }
     });
   }
 
