@@ -17,7 +17,7 @@ export function Login(props: Props) {
   }
 
   const sendCookie = () => {
-    fetch('http://139.59.131.82:8087/users', {credentials: 'include'}).then(res => console.log(res));
+    fetch('/users', {credentials: 'include'}).then(res => console.log(res));
   };
   return (
     <>

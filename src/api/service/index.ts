@@ -6,7 +6,7 @@ export interface RequestConfig {
   headers?: Headers;
 }
 
-const BASE_URL = 'http://139.59.131.82:8087'; // TODO add url
+const BASE_URL = 'http://localhost:8087'; // TODO add url
 
 export class Requests {
   baseUrl: string;
@@ -22,7 +22,7 @@ export class Requests {
 
   async post<T>(path: string, data: T) {
     const url = this.baseUrl + path;
-    const headers = new Headers({'Content-Type': 'application/json'});
+    const headers = new Headers({'Content-Type': 'application/json', "Accept": "*/*"});
     const config = {
       method: 'POST',
       headers,
@@ -56,7 +56,7 @@ export class Requests {
 
   async #makeRequest(url: string, config: RequestConfig = {}) {
     try {
-      const response = await fetch(url, {...config, credentials: 'include'});
+      const response = await fetch(url, {...config});
       if (response.ok) return response.json();
       else if (response.status === 401 || response.status === 403) {
         // window.location.replace(ROUTES.LOGIN);

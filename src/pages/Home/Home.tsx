@@ -21,7 +21,7 @@ export function Home(props: Props) {
       </div>
       <div className="img-block">
         <div className="img-wrapper">
-          <img src="/images/avatar.jpeg" alt="" />
+          {/* <img src="/images/avatar.jpeg" alt="" /> */}
         </div>
       </div>
 
