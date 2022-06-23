@@ -10,7 +10,9 @@ export function AdminLayout(props: Props) {
   return (
     <div className="admin-layout">
       <ProfileHeader path="/images/admin.png"/>
+        <div className='table-container'>
       <DataTable />
+      </div>
     </div>
   );
 }
