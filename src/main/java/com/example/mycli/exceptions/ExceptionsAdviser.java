@@ -62,5 +62,11 @@ public class ExceptionsAdviser {
     String accountOK(AccountOK ex) {
         return ex.getMessage();
     }
+    @ResponseBody
+    @ExceptionHandler(FolderInit.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    String folderInit(FolderInit ex) {
+        return ex.getMessage();
+    }
 
 }

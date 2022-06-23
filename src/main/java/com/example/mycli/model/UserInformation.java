@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class UserInformation {
     private @Id Long id;
     private String name;

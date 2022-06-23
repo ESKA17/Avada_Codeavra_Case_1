@@ -3,12 +3,8 @@ package com.example.mycli.services;
 import com.example.mycli.exceptions.*;
 import com.example.mycli.model.UserEntity;
 import com.example.mycli.repository.UserEntityRepository;
-import com.example.mycli.web.AuthResponse;
 import com.example.mycli.web.JwtProvider;
-import com.example.mycli.web.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.Cookie;

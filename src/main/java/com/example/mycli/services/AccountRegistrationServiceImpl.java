@@ -4,7 +4,6 @@ import com.example.mycli.exceptions.AccountConflict;
 import com.example.mycli.exceptions.AccountCreated;
 import com.example.mycli.model.UserEntity;
 import com.example.mycli.repository.UserEntityRepository;
-import com.example.mycli.web.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

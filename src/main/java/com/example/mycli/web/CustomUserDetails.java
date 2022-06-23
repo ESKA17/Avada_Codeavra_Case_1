@@ -14,7 +14,7 @@ public class CustomUserDetails implements UserDetails {
     private String password;
     private Collection<? extends GrantedAuthority> grantedAuthorities;
 
-    static CustomUserDetails fromUserEntityToCustomUserDetails(UserEntity userEntity) {
+    public static CustomUserDetails fromUserEntityToCustomUserDetails(UserEntity userEntity) {
         CustomUserDetails customUserDetails = new CustomUserDetails();
         if (userEntity != null) {
             customUserDetails.login = userEntity.getEmail();
