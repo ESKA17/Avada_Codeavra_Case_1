@@ -76,3 +76,21 @@
     }
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .header {
+    .logo-title{
+      font-size: 2.8rem;
+    }
+    .links {
+      display: none;
+    }
+  }
+}
+
+
+// 768×1024
+
+// 414×816
+
+// 1920×1080 
