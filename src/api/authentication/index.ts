@@ -14,7 +14,7 @@ export class Authentication extends Requests {
     const path = '/auth';
     const result = await this.post(path, data);
     if (result) {
-      console.log(result)
+      console.log(result);
       sessionStorage.setItem('access_token', result);
       // window.location.replace(ROUTES.HOME);
     }
@@ -25,14 +25,23 @@ export class Authentication extends Requests {
     await this.post(path, null);
   }
 
-  async apply(data: ApplyInputs) {
-    console.log('apply', data);
-    const path = '/apply';
+  async sendScreeningData(data: ApplyInputs) {
+    const path = '/screening';
     await this.post(path, data);
   }
 
-  async uploadCv(data: File) {
-    const path = '/cv';
+  async uploadCv(data: string | ArrayBuffer) {
+    const path = '/upload';
     await this.post(path, data);
+  }
+
+  async getCVs() {
+    const path = '/files';
+    await this.get(path);
+  }
+
+  async getCV(fileName: string) {
+    const path = `/file/${fileName}`;
+    await this.get(path);
   }
 }

@@ -1,6 +1,6 @@
 import {InputWrapper} from '../InputWrapper/InputWrapper';
 import {REGS} from '../../utils/regex';
-import {useForm, SubmitHandler, Controller} from 'react-hook-form';
+import {useForm, SubmitHandler} from 'react-hook-form';
 import {ApplyInputs, TRACKS} from '../../api/authentication/authTypes';
 import {Authentication} from '../../api/authentication';
 import './Form.scss';
@@ -10,12 +10,22 @@ type Props = {};
 export function Apply(props: Props) {
   const {register, handleSubmit, control, formState: {errors}} = useForm<ApplyInputs>();
   const onSubmit: SubmitHandler<ApplyInputs> = data => submit(data);
+  const authentication = new Authentication();
 
-  function submit(data: ApplyInputs) {
-    console.log(data);
-    const authentication = new Authentication();
-    authentication.apply({...data, isDiploma: data.isDiploma ? 1 : 0});
-    authentication.uploadCv(data.cv[0]);
+  async function submit(data: ApplyInputs) {
+    await authentication.sendScreeningData({...data, isDiploma: data.isDiploma ? 1 : 0});
+    getBase64(data.cv[0]);
+  }
+
+  function getBase64(file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      authentication.uploadCv(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
   }
 
   return (

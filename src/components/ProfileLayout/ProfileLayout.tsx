@@ -1,5 +1,8 @@
 import './ProfileLayout.scss';
 import ProfileLHeader from '../ProfileHeader';
+import {useEffect} from 'react';
+import {Authentication} from '../../api/authentication';
+import {User} from '../../api/users';
 
 
 type Props = {};
@@ -15,6 +18,15 @@ const user = {
 };
 
 export function ProfileLayout(props: Props) {
+  async function getUserInfo() {
+    const user = new User();
+    const data = await user.getUsers();
+    console.log(data)
+  }
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
   return (
     <div className={'profile-layout'}>
       <ProfileLHeader path="/images/avatar.png" />

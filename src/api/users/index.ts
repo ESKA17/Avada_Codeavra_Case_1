@@ -20,13 +20,8 @@ export class User extends Requests {
     await this.post(path, id);
   }
 
-  async getUser(id: string) {
-    const path = '';
-    await this.post(path, id);
-  }
-
   async changeStatus(data) {
-    const path = '';
+    const path = '/changeStatus';
     await this.post(path, data);
   }
 }
