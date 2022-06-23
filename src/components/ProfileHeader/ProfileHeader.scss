@@ -9,7 +9,7 @@
 //     // justify-content: space-between;
 //     align-items: center;
 //     width: 100%;
-  
+
 //     .logo-title {
 //       font-weight: bold;
 //       font-size: 3rem;
@@ -17,12 +17,12 @@
 //       margin-left: 3rem;
 //       color: #D26032;
 //     }
-  
+
 //     .profile-header-navs {
 //       display: flex;
 //       align-items: center;
 //       font-size: 1.5rem;
-  
+
 //       .link {
 //         margin-right: 5rem;
 //         font-weight: 500;
@@ -60,7 +60,8 @@
 
     .link {
       margin-right: 5rem;
-      &:hover{
+
+      &:hover {
         color: #D26032;
       }
     }
@@ -71,4 +72,21 @@
       border-radius: 100px;
     }
   }
+}
+
+@media screen and (max-width: 768px) {
+  .header-profile {
+    padding: 2rem 4rem;
+    flex-direction: column;
+
+    .profile-header-navs {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .link{
+        margin-right: 0;
+      }
+    }
+  }
+
 }
