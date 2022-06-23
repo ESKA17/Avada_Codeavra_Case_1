@@ -10,6 +10,7 @@
     align-self: center;
     margin-left: 3rem;
     color: #D26032;
+    max-width: 200px;
   }
 
   .navs {
@@ -22,9 +23,19 @@
     .link {
       margin: 0 10px;
       font-weight: 500;
-      &:hover{
+
+      &:hover {
         color: #772467;
       }
     }
   }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    .navs {
+      display: none;
+    }
+  }
+
 }

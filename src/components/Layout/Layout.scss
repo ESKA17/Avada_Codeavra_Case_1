@@ -5,15 +5,22 @@
   padding: 5rem;
 
   .container {
+    display: flex;
     margin: 0 auto;
     max-width: 1440px;
-    display: flex;
     flex-direction: column;
     height: 100%;
     padding: 3rem;
     background: linear-gradient(179.46deg, rgba(255, 255, 255, 0.7) 0.46%, rgba(255, 255, 255, 0.7) 113.24%, rgba(255, 255, 255, 0.07) 113.25%);
-    opacity: 0.9;
     backdrop-filter: blur(24px);
     border-radius: 36px;
+    border: 2px solid #ffffff;
   }
+}
+
+@media screen and (max-width: 768px){
+  .layout{
+    padding: 3rem;
+  }
+
 }

@@ -1,14 +1,15 @@
 import './Header.scss';
+import {Link} from 'react-router-dom';
 
 type Props = {};
 
 export function Header(props: Props) {
   return (
     <header className="header">
-      <div className={'row'}>
+      <Link to={'/'} className={'row'}>
         <img src="/images/logo.png" alt="logo" />
         <p className={'logo-title'}>Singularity camp</p>
-      </div>
+      </Link>
 
       <div className={'navs'}>
         <a className="link" href="/about">О программе</a>

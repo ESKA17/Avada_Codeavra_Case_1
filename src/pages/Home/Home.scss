@@ -1,6 +1,6 @@
 .home {
   flex: 1;
-  padding: 3rem 4rem;
+  padding: 3rem 6rem;
   display: grid;
   grid-template-columns: 2fr 2fr;
   gap: 20px;
@@ -10,14 +10,27 @@
     width: 70%;
 
     h1 {
-      margin-bottom: 20px;
-      font-size: 3rem;
+      font-size: 2.6rem;
+      color: #2E487C;
+      margin-bottom: 50px;
     }
 
     p {
       color: #772467;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: bold;
+      margin-bottom: 50px;
     }
   }
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    .img-block{
+      display: none;
+    }
+  }
+
 }

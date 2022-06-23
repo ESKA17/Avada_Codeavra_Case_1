@@ -1,0 +1,15 @@
+.button{
+  background: rgba(46, 72, 124, 0.55);
+  border: 1px solid rgba(46, 72, 124, 0.55);
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  color: #fff;
+  padding: 15px 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: 0.3s linear;
+
+  &:hover{
+    background: #772467;
+  }
+}

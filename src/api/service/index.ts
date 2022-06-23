@@ -56,7 +56,7 @@ export class Requests {
 
   async #makeRequest(url: string, config: RequestConfig = {}) {
     try {
-      const response = await fetch(url, config);
+      const response = await fetch(url, {...config, credentials: 'include'});
       if (response.ok) return response.json();
       else if (response.status === 401 || response.status === 403) {
         // window.location.replace(ROUTES.LOGIN);
