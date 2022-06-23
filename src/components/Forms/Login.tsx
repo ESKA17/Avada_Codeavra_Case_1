@@ -1,7 +1,6 @@
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {LoginInputs} from '../../api/authentication/authTypes';
 import {InputWrapper} from '../InputWrapper/InputWrapper';
-import {REGS} from '../../utils/regex';
 import {Authentication} from '../../api/authentication';
 import Button from '../Button';
 import {User} from '../../api/users';
@@ -29,7 +28,7 @@ export function Login(props: Props) {
           <>
             <input id="email" {...register('email', {
               required: true,
-              pattern: REGS.email,
+              // pattern: REGS.email,
               maxLength: 30,
             })} />
             {errors.email && <span>This email is required</span>}
@@ -39,7 +38,7 @@ export function Login(props: Props) {
           <>
             <input id="password" {...register('password', {
               required: true,
-              pattern: REGS.password,
+              // pattern: REGS.password,
               maxLength: 30,
             })} />
             {errors.password && <span>This password is required</span>}

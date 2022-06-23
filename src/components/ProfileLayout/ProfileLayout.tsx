@@ -32,7 +32,7 @@ export function ProfileLayout(props: Props) {
   async function getUserInfo() {
     const data = await userData.getUsers();
 
-    // console.log(data);
+    console.log(data);
   }
 
   async function getUserStatus() {
@@ -46,10 +46,10 @@ export function ProfileLayout(props: Props) {
   }
 
   useEffect(() => {
-    // getUserInfo();
-    // getUserCv();
+    getUserInfo();
+    getUserCv();
     // getUserStatus();
-    getStepikInfo();
+    // getStepikInfo();
   }, []);
   return (
     <div className={'profile-layout'}>

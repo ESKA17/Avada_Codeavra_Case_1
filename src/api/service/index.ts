@@ -68,8 +68,7 @@ export class Requests {
 
   async #makeRequest(url: string, config: RequestConfig = {}) {
     try {
-      // const token = sessionStorage.getItem('access_token');
-      const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaXphZGFAZ21haWwuY29tIiwiZXhwIjoxNjU3MjE2ODAwfQ.HpQsajMJqHGbm-qnKvWRs63qyMl2ZIqpQZmh4dzTSLiBrQpEYzyAlemtYWXC5UgwIsAPexW0zyzrKReWRTUIFA'
+      const token = sessionStorage.getItem('access_token');
       if (token) {
         if (config.headers) {
           config.headers.append('token', token);
@@ -79,7 +78,6 @@ export class Requests {
       }
       const response = await fetch(url, {...config});
       if (response.ok) {
-        console.log(await response.text());
         return await response.text();
       } else if (response.status === 401 || response.status === 403) {
         // window.location.replace(ROUTES.LOGIN);
