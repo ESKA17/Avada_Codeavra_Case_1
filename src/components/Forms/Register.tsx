@@ -16,9 +16,11 @@ export function Register(props: Props) {
     authentication.register(data).then((res) => console.log(res));
   }
 
+  // function redirect()
+
   return (
     <form className={'form'} onSubmit={handleSubmit(onSubmit)}>
-      <h1 className={'mb-20'}>Register</h1>
+      <h1 className={'mb-20'}  style={{color: '#000'}}> Register</h1>
       <InputWrapper id="email" title="Email">
         <>
           <input id="email" defaultValue="test" {...register('email', {
@@ -52,6 +54,7 @@ export function Register(props: Props) {
         </>
       </InputWrapper>
       <input className={'btn'} type="submit" />
+  
     </form>
   );
 };

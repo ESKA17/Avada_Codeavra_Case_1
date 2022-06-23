@@ -30,7 +30,7 @@ export function Apply(props: Props) {
 
   return (
     <form className={'form'} onSubmit={handleSubmit(onSubmit)}>
-      <h1 className={'mb-20'}>Application Form</h1>
+      <h1 className={'mb-20'} style={{color: '#000'}} >Application Form</h1>
       <InputWrapper id="email" title="First Name">
         <>
           <input id="email" defaultValue="test" {...register('firstName', {
@@ -88,7 +88,7 @@ export function Apply(props: Props) {
           {errors.cv && <span>This cv is required</span>}
         </>
       </InputWrapper>
-
+        
       <input type="checkbox" {...register('isDiploma', {required: true})} />
       {errors.isDiploma && <span>This cv is required</span>}
       <input className={'btn'} type="submit" />

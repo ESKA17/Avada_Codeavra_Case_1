@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom';
 import { StringLiteralLike } from 'typescript';
 import './ProfileHeader.scss';
 
@@ -10,17 +11,15 @@ export function ProfileHeader(props: Props) {
   const {path} = props;
   return (
     <header className="header-profile">
-      <div className={'row'}>
+     <Link to={"/"}><div className={'row'}>
         <img src="/images/logo.png" alt="logo" />
         <p className={'logo-title'}>Singularity <br></br> camp</p>
-      </div>
+      </div> </Link> 
 
       <div className={'profile-header-navs'}>
-        <div className="link" style={{fontWeight: 700}} >Main page</div>
-        <div className="link" style={{fontWeight: 700}} >Log out</div>
-        <div className="link" ><img className="avatar" src={path} alt="avatar" /></div>
-
-        
+        <Link to={"/"}><div className="link" style={{fontWeight: 700}} >Main page</div></Link>
+        <Link to='/'><div className="link" style={{fontWeight: 700}} >Log out</div></Link>
+        <Link to='/profile'><div className="link" ><img className="avatar" src={path} alt="avatar" /></div></Link>
       </div>
     </header>
   );
