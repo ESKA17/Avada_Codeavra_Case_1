@@ -59,6 +59,10 @@
 
 @media screen and (max-width: 768px) {
   .header {
+    .logo-title{
+      font-size: 2.8rem;
+      margin-left: 10px;
+    }
     .links {
       display: none;
     }

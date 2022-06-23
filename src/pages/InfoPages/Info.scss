@@ -1,0 +1,25 @@
+.info {
+  padding: 2rem;
+  font-size: 1.5rem;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+}
+
+
+@media screen  and (max-width: 768px){
+  .info{
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+
+}

@@ -1,6 +1,6 @@
 import {InputWrapper} from '../InputWrapper/InputWrapper';
 import {REGS} from '../../utils/regex';
-import {useForm, SubmitHandler} from 'react-hook-form';
+import {useForm, SubmitHandler, Controller} from 'react-hook-form';
 import {ApplyInputs, TRACKS} from '../../api/authentication/authTypes';
 import {Authentication} from '../../api/authentication';
 import './Form.scss';
@@ -8,13 +8,14 @@ import './Form.scss';
 type Props = {};
 
 export function Apply(props: Props) {
-  const {register, handleSubmit, watch, formState: {errors}} = useForm<ApplyInputs>();
+  const {register, handleSubmit, control, formState: {errors}} = useForm<ApplyInputs>();
   const onSubmit: SubmitHandler<ApplyInputs> = data => submit(data);
 
   function submit(data: ApplyInputs) {
+    console.log(data);
     const authentication = new Authentication();
-    authentication.apply(data).then((res) => console.log(res));
-    authentication.uploadCv(data.cv).then((res) => console.log(res));
+    authentication.apply({...data, isDiploma: data.isDiploma ? 1 : 0});
+    authentication.uploadCv(data.cv[0]);
   }
 
   return (
@@ -54,22 +55,12 @@ export function Apply(props: Props) {
       </InputWrapper>
       <InputWrapper id="age" title="Your Age">
         <>
-          <input type="number" id="passwordConfirm" {...register('age', {
+          <input type="number" id="age" {...register('age', {
             required: true,
-            max: 2,
-            min: 2,
           })} />
           {errors.age && <span>This lastName is required</span>}
         </>
       </InputWrapper>
-      {/*<InputWrapper id="track" title="Choose your track">*/}
-      {/*  <>*/}
-      {/*    <input id="track" {...register('track', {*/}
-      {/*      required: true,*/}
-      {/*    })} />*/}
-      {/*    {errors.track && <span>This track is required</span>}*/}
-      {/*  </>*/}
-      {/*</InputWrapper>*/}
       <InputWrapper id="track" title="Choose your track">
         <select {...register('track')}>
           <option value={TRACKS.FRONTEND}>FRONTEND</option>
@@ -79,15 +70,17 @@ export function Apply(props: Props) {
           <option value={TRACKS.DEVOPS}>DEVOPS</option>
         </select>
       </InputWrapper>
-
       <InputWrapper id="cv" title="Upload CV">
         <>
-          <input type="file" id="passwordConfirm" {...register('cv', {
+          <input type="file" id="cv" {...register('cv', {
             required: true,
           })} />
           {errors.cv && <span>This cv is required</span>}
         </>
       </InputWrapper>
+
+      <input type="checkbox" {...register('isDiploma', {required: true})} />
+      {errors.isDiploma && <span>This cv is required</span>}
       <input className={'btn'} type="submit" />
     </form>
   );

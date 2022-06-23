@@ -13,8 +13,9 @@ export class Authentication extends Requests {
   async login(data: LoginInputs) {
     const path = '/auth';
     const result = await this.post(path, data);
-    if (result && result.token) {
-      sessionStorage.setItem('access_token', result.token);
+    if (result) {
+      console.log(result)
+      sessionStorage.setItem('access_token', result);
       // window.location.replace(ROUTES.HOME);
     }
   }
@@ -25,6 +26,7 @@ export class Authentication extends Requests {
   }
 
   async apply(data: ApplyInputs) {
+    console.log('apply', data);
     const path = '/apply';
     await this.post(path, data);
   }
@@ -32,10 +34,5 @@ export class Authentication extends Requests {
   async uploadCv(data: File) {
     const path = '/cv';
     await this.post(path, data);
-  }
-
-  async getUsers(data: ApplyInputs) {
-    const path = '/users';
-    await this.get(path);
   }
 }

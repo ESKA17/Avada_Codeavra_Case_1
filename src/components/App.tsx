@@ -10,6 +10,7 @@ import {AdminLayout} from './AdminLayout/AdminLayout';
 import Dashboard from '../pages/Dashboard';
 import ProfileLayout from './ProfileLayout';
 import {Apply} from './Forms/Apply';
+import InfoPages from '../pages/InfoPages';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="apply" element={<Apply />} />
+          <Route path="info/:slug" element={<InfoPages />} />
         </Route>
         <Route path="/profile" element={<ProfileLayout />}>
           <Route index element={<Profile />} />

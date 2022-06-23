@@ -22,7 +22,7 @@ export class Requests {
 
   async post<T>(path: string, data: T) {
     const url = this.baseUrl + path;
-    const headers = new Headers({'Content-Type': 'application/json', "Accept": "*/*"});
+    const headers = new Headers({'Content-Type': 'application/json', 'Accept': '*/*'});
     const config = {
       method: 'POST',
       headers,
@@ -59,18 +59,18 @@ export class Requests {
       const token = sessionStorage.getItem('access_token');
       if (token) {
         if (config.headers) {
-          config.headers.append('Authorization', `Bearer ${token}`);
+          config.headers.append('token', token);
         } else {
-          config.headers = new Headers({Authorization: `Bearer ${token}`});
+          config.headers = new Headers({token: token});
         }
       }
       const response = await fetch(url, {...config});
-      if (response.ok) return response.json();
+      if (response.ok) return JSON.parse(await response.text());
       else if (response.status === 401 || response.status === 403) {
         // window.location.replace(ROUTES.LOGIN);
       } else alert(response.statusText);
     } catch (e) {
-      console.log(e);
+      console.log('error', e);
       // window.location.replace(ROUTES.ERROR_500);
     }
   }
