@@ -18,15 +18,29 @@
     justify-content: space-evenly;
     display: flex;
     align-items: center;
+  }
+
+  .link {
+    cursor: pointer;
+    margin: 0 10px;
+    font-weight: 500;
     font-size: 1.5rem;
 
-    .link {
-      margin: 0 10px;
-      font-weight: 500;
+    &:hover {
+      color: #772467;
+    }
+  }
 
-      &:hover {
-        color: #772467;
-      }
+  &-avatar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    img {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      object-fit: cover;
     }
   }
 }

@@ -4,7 +4,7 @@ import {LoginInputs, RegistrationInputs} from './authTypes';
 
 export class Authentication extends Requests {
   async register(data: RegistrationInputs) {
-    const path = '/register'; // todo add path
+    const path = '/register';
     const result = await this.post(path, data);
     if (result) {
       // window.location.replace(ROUTES.LOGIN);
@@ -12,16 +12,16 @@ export class Authentication extends Requests {
   }
 
   async login(data: LoginInputs) {
-    const path = '/auth'; // todo add path
+    const path = '/auth';
     const result = await this.post(path, data);
     if (result) {
-      console.log(result)
+      console.log(result);
       // window.location.replace(ROUTES.PROFILE);
     }
   }
 
   async logout() {
-    const path = '/logout'; // todo add path
+    const path = '/logout';
     await this.post(path, null);
   }
 }
