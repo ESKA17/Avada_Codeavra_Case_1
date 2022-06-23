@@ -8,6 +8,7 @@ export const REGS: REGEX = {
   // legalName:        /^.{2,250}$/,
   // legalType:        /[\s\S]+/,
 
+  age:/^\d{2}$/,
   sms: /^\d{4}$/,
   password: /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}/g,
   email: /[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/g,
