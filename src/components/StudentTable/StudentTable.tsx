@@ -41,7 +41,7 @@ export function DataTable() {
 
   async function getAllUsers() {
     const data = await screening.getAll();
-    console.log(JSON.parse(data));
+    console.log("data: ", data);
   }
 
   async function deleteUser(id) {

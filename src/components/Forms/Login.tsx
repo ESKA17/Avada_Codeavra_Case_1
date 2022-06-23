@@ -21,6 +21,7 @@ export function Login(props: Props) {
       if (localStorage.getItem('isApplied')) {
         navigate('/apply');
       }
+      
     });
   }
 

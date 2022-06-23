@@ -22,7 +22,7 @@ export function Apply(props: Props) {
     formData.append('file', file);
     authentication.uploadCv(formData);
   }
-
+//name surname fathernName age studyDegree 
   return (
     <form className={'form'} onSubmit={handleSubmit(onSubmit)}>
       <h1 className={'mb-20'} style={{color: '#000'}} >Application Form</h1>

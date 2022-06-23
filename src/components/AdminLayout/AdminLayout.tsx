@@ -9,21 +9,21 @@ import './AdminLayout.scss';
 
 type Props = {};
 
-async function getUsers() {
-  const url = `http://localhost:8087/users`;
-  const result = await fetch(url);
+// async function getUsers() {
+//   const url = `http://localhost:8087/users`;
+//   const result = await fetch(url);
   
-  return result.json();
-}
+//   return result.json();
+// }
 
 
 export function AdminLayout(props: Props) {
 
-  useEffect(() => {
-    const data = getUsers();
-    console.log(data);
+  // useEffect(() => {
+  //   const data = getUsers();
+  //   console.log(data);
 
-  }, [])
+  // }, [])
   return (
     <div className="admin-layout">
       <ProfileHeader path="/images/admin.png"/>
