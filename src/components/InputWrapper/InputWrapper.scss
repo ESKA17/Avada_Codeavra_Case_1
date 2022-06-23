@@ -5,12 +5,13 @@
   label{
     font-weight: 600;
   }
-  input {
+  input, select {
     margin-top: 5px;
     margin-bottom: 20px;
     height: 40px;
     border-radius: 4px;
-    padding: 10px 20px;
+    padding: 10px;
     border: 1px solid #D26032;
   }
+
 }

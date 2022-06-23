@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  font-size: 14px;
+}
+
+a, a:focus, a:active, a:hover {
+  color: #000;
+}
+
+.img-wrapper img {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  margin: 0 auto;
+}
+
+.App {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.sb {
+  justify-content: space-between;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.p-10 {
+  padding: 10px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+.btn {
+  background: #D26032;
+  color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  transition: 0.3s linear;
+  font-size: 1.4rem;
+
+  &:hover {
+    background: #772467;
+  }
+}
+
+@media screen and (max-width: 768px){
+  html {
+    font-size: 12px;
+  }
+
+}

@@ -1,8 +1,9 @@
 import {SubmitHandler, useForm} from 'react-hook-form';
-import {LoginInputs, RegistrationInputs} from '../../api/authentication/authTypes';
+import {LoginInputs} from '../../api/authentication/authTypes';
 import {InputWrapper} from '../InputWrapper/InputWrapper';
 import {REGS} from '../../utils/regex';
 import {Authentication} from '../../api/authentication';
+import Button from '../Button';
 
 type Props = {};
 
@@ -15,12 +16,13 @@ export function Login(props: Props) {
     authentication.login(data).then((res) => console.log(res));
   }
 
-const sendCookie = ()=>{
-  fetch('http://139.59.131.82:8087/users', {credentials: "include"}).then(res => console.log(res));
-}
+  const sendCookie = () => {
+    fetch('http://139.59.131.82:8087/users', {credentials: 'include'}).then(res => console.log(res));
+  };
   return (
     <>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <h1 className={'mb-20'}>Login User</h1>
         <InputWrapper id="email" title="Email">
           <>
             <input id="email" {...register('email', {
@@ -41,9 +43,9 @@ const sendCookie = ()=>{
             {errors.password && <span>This password is required</span>}
           </>
         </InputWrapper>
-        <input type="submit" />
+        <input className={'btn'} type="submit" />
       </form>
-      <button onClick={sendCookie}>Send Cookie</button>
+      <Button onClick={sendCookie}>Send Cookie</Button>
     </>
 
   );

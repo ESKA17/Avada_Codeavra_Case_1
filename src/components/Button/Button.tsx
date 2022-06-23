@@ -1,4 +1,5 @@
 import {ReactNode} from 'react';
+import './Button.scss';
 
 type Props = {
   children: ReactNode,
@@ -7,7 +8,7 @@ type Props = {
 
 export function Button({onClick, children}: Props) {
   return (
-    <button onClick={onClick}>
+    <button className={'button'} onClick={onClick}>
       {children}
     </button>
   );

@@ -18,6 +18,7 @@ export function Register(props: Props) {
 
   return (
     <form className={'form'} onSubmit={handleSubmit(onSubmit)}>
+      <h1 className={'mb-20'}>Register</h1>
       <InputWrapper id="email" title="Email">
         <>
           <input id="email" defaultValue="test" {...register('email', {
@@ -50,7 +51,7 @@ export function Register(props: Props) {
           {errors.passwordConfirm && <span>This passwordConfirm is required</span>}
         </>
       </InputWrapper>
-      <input type="submit" />
+      <input className={'btn'} type="submit" />
     </form>
   );
 };
