@@ -23,7 +23,7 @@ public class UserService {
         userEntityRepository.save(userEntity);
     }
 
-    public UserEntity findByLogin(String login) {
+    public UserEntity findByEmail(String login) {
         return userEntityRepository.findByEmail(login);
     }
 

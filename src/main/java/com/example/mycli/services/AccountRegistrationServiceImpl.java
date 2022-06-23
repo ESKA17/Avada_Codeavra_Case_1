@@ -16,7 +16,7 @@ public class AccountRegistrationServiceImpl implements AccountRegistrationServic
 
     @Override
     public String registerAccount(String email, String password) {
-        UserEntity userEntity = userService.findByLogin(email);
+        UserEntity userEntity = userEntityRepository.findByEmail(email);
         if (userEntity == null) {
             UserEntity user = new UserEntity();
             user.setPassword(password);
