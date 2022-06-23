@@ -6,12 +6,16 @@
     font-weight: 600;
   }
   input, select {
-    margin-top: 5px;
+    margin-top: 3px;
     margin-bottom: 20px;
     height: 40px;
     border-radius: 4px;
     padding: 10px;
     border: 1px solid #D26032;
+
+    input[type=file]{
+      background-color: #fff;
+    }
   }
 
 }
