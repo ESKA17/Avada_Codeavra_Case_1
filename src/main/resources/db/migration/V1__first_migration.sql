@@ -1,4 +1,7 @@
-CREATE SEQUENCE account_seq
+CREATE SEQUENCE user_info
+    START WITH 1
+    INCREMENT BY 1;
+CREATE SEQUENCE user_en
     START WITH 1
     INCREMENT BY 1;
 create table ROLE_ENTITY

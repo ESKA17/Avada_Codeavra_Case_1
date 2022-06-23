@@ -1,6 +1,5 @@
 package com.example.mycli.services;
 
-import com.example.mycli.exceptions.AccountNotFound;
 import com.example.mycli.repository.UserEntityRepository;
 import com.example.mycli.repository.UserInformationRepository;
 import lombok.RequiredArgsConstructor;

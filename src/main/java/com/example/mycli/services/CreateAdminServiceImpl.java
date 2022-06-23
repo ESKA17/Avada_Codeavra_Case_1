@@ -19,7 +19,7 @@ public class CreateAdminServiceImpl implements CreateAdminService{
         if (userEntity == null) {
             UserEntity user = new UserEntity();
             user.setPassword("admin");
-            user.setEmail("admin");
+            user.setEmail("adam.inov@gmail.com");
             userService.saveAdmin(user);
             log.info("email created");
         } else {

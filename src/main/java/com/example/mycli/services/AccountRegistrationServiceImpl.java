@@ -17,7 +17,7 @@ public class AccountRegistrationServiceImpl implements AccountRegistrationServic
     private final UserService userService;
 
     @Override
-    public String registerAccount(String email, String password) {
+    public void registerAccount(String email, String password) {
         UserEntity userEntity = userEntityRepository.findByEmail(email);
         if (userEntity == null) {
             UserEntity user = new UserEntity();
@@ -25,7 +25,6 @@ public class AccountRegistrationServiceImpl implements AccountRegistrationServic
             user.setEmail(email);
             userService.saveUser(user);
             log.info("email created");
-            throw new AccountCreated(email);
         } else {
             log.info("email taken");
             throw new AccountConflict(email);

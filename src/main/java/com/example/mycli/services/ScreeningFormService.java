@@ -10,4 +10,6 @@ public interface ScreeningFormService {
     void fillScreeningForm(ScreeningRequest screeningRequest, HttpServletRequest httpServletRequest);
     UserInformation getScreeningForm(HttpServletRequest httpServletRequest);
     List<UserInformation> getAllScreeningForms();
+
+    void fillTemplate(ScreeningRequest screeningRequest, Long id);
 }
