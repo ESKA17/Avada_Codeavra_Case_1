@@ -13,7 +13,7 @@ export function ProfileHeader(props: Props) {
 
       <div className={'profile-header-navs'}>
         <div className="link" style={{fontWeight: 700}} >Main page</div>
-        <div className="link" >Log out</div>
+        <div className="link" style={{fontWeight: 700}} >Log out</div>
         <div className="link" ><img className="avatar" src="/images/avatar.png" alt="logo" /></div>
 
         
