@@ -5,10 +5,12 @@ import com.example.mycli.exceptions.AccountCreated;
 import com.example.mycli.model.UserEntity;
 import com.example.mycli.repository.UserEntityRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
+@Log
 public class AccountRegistrationServiceImpl implements AccountRegistrationService{
 
     private final UserEntityRepository userEntityRepository;
@@ -22,8 +24,10 @@ public class AccountRegistrationServiceImpl implements AccountRegistrationServic
             user.setPassword(password);
             user.setEmail(email);
             userService.saveUser(user);
+            log.info("email created");
             throw new AccountCreated(email);
         } else {
+            log.info("email taken");
             throw new AccountConflict(email);
         }
     }

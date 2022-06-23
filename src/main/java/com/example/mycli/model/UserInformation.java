@@ -15,7 +15,8 @@ import javax.persistence.*;
 @Table(name = "USER_INFORMATION")
 public class UserInformation {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "account_seq", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 
@@ -25,8 +26,8 @@ public class UserInformation {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "father_name")
-    private String fatherName;
+    @Column(name = "middle_name")
+    private String middleName;
 
     @Column(name = "email")
     private String email;
@@ -34,7 +35,24 @@ public class UserInformation {
     @Column(name = "age")
     private Integer age;
 
+    @Column(name = "status")
+    private Integer status = 0;
+
     @Column(name = "study_degree")
     @Enumerated(EnumType.STRING)
     private StudyDegree studyDegree;
+
+    @Override
+    public String toString() {
+        return "UserInformation{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", status=" + status +
+                ", studyDegree=" + studyDegree +
+                '}';
+    }
 }

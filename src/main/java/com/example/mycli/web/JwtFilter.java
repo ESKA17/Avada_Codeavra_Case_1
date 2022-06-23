@@ -44,16 +44,33 @@ public class JwtFilter extends GenericFilterBean {
     }
 
     private String getTokenFromRequest(HttpServletRequest httpServletRequest) {
-        Cookie[] cookies = httpServletRequest.getCookies();
-        String token = null;
+//        Cookie[] cookies = httpServletRequest.getCookies();
+//        String token = null;
+//        String username = null;
+//        if (cookies == null)  return null;
+//        for (Cookie cookie : cookies) {
+//            if (cookie.getName().equals("token")) {
+//                token = cookie.getValue();
+//                username = jwtProvider.getLoginFromToken(token);
+//            }
+//            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null || token != null) {
+//                UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
+//                if (Boolean.TRUE.equals(jwtProvider.validateToken(token))) {
+//                    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+//                                    userDetails, null, userDetails.getAuthorities());
+//                    authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(
+//                            httpServletRequest));
+//                    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+//                }
+//            }
+//        }
+//        return null;
+        String token = httpServletRequest.getHeader("token");
         String username = null;
-        if (cookies == null)  return null;
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("token")) {
-                token = cookie.getValue();
-                username = jwtProvider.getLoginFromToken(token);
-            }
-            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null || token != null) {
+        if (token != null) {
+            username = jwtProvider.getLoginFromToken(token);
+        }
+        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null || token != null) {
                 UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
                 if (Boolean.TRUE.equals(jwtProvider.validateToken(token))) {
                     UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
@@ -62,8 +79,7 @@ public class JwtFilter extends GenericFilterBean {
                             httpServletRequest));
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 }
-            }
         }
-        return null;
+        return token;
     }
 }

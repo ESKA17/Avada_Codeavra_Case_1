@@ -22,6 +22,12 @@ public class UserService {
         userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
         userEntityRepository.save(userEntity);
     }
+    public void saveAdmin(UserEntity userEntity) {
+        RoleEntity userRole = roleEntityRepository.findByName("ROLE_ADMIN");
+        userEntity.setRoleEntity(userRole);
+        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+        userEntityRepository.save(userEntity);
+    }
 
     public UserEntity findByEmail(String login) {
         return userEntityRepository.findByEmail(login);

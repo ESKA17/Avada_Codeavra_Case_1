@@ -21,13 +21,14 @@ create table USER_INFORMATION
     id LONG,
     name NVARCHAR(40),
     surname NVARCHAR(40)   ,
-    father_name NVARCHAR(40),
+    middle_name NVARCHAR(40),
     email NVARCHAR(50),
     age INTEGER,
+    status INTEGER,
     study_degree NVARCHAR(30),
     PRIMARY KEY (id)
 );
 
-
-INSERT INTO ROLE_ENTITY VALUES ( 1, 'ROLE_USER' );
+INSERT INTO ROLE_ENTITY VALUES ( 1, 'ROLE_ADMIN' );
+INSERT INTO ROLE_ENTITY VALUES ( 2, 'ROLE_USER' );
 
