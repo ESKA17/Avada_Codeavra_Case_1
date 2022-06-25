@@ -21,9 +21,9 @@ public class JobApplicationControllers {
     private final AccountDeleteService accountDeleteService;
 
     @PostMapping("/changeStatus")
-    public void changeStatus(@RequestParam int param, HttpServletRequest httpServletRequest) {
+    public void changeStatus(@RequestParam int param, String email, HttpServletRequest httpServletRequest) {
         log.info("status change");
-        userStatusService.changeStatus(param, httpServletRequest);
+        userStatusService.changeStatus(param, email, httpServletRequest);
     }
 
     @GetMapping("/getStatus")

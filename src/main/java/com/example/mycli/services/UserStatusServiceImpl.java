@@ -20,18 +20,11 @@ public class UserStatusServiceImpl implements UserStatusService {
     private final JwtProvider jwtProvider;
 
     @Override
-    public void changeStatus(int status, HttpServletRequest httpServletRequest) {
-        String token = httpServletRequest.getHeader("token");
-        if (token != null) {
-            String email = jwtProvider.getLoginFromToken(token);
+    public void changeStatus(int status, String email, HttpServletRequest httpServletRequest) {
             UserInformation userInformation = userInformationRepository.findByEmail(email);
             userInformation.setStatus(status);
             userInformationRepository.save(userInformation);
             log.info("user info was saved");
-        } else {
-            log.info("token is null");
-            throw new AuthenticationFailed();
-        }
 
     }
     @Override
